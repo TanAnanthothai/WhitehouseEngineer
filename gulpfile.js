@@ -30,7 +30,8 @@ gulp.task('copy-files', function() {
       '!' + BASE_DIR + 'functions{,/**}',
       '!' + BASE_DIR + '*.*',
       BASE_DIR + '*.{html,ico}',
-      BASE_DIR + 'manifest.json'
+      BASE_DIR + 'manifest.json',
+      BASE_DIR + 'service-worker.js',
     ])
     .pipe(plumber())
     .pipe(changed(copyDest))
