@@ -17,7 +17,8 @@ const BASE_DIR = './';
 const DEST_DIR = './public/';
 
 const cleanFilesList = [
-  DEST_DIR + '**'
+  DEST_DIR + '**',
+  BASE_DIR + 'styles/**'
 ];
 
 gulp.task('copy-files', function() {
@@ -57,6 +58,7 @@ gulp.task('generate-sw', function() {
       './scripts/*.js',
       './styles/*.css'
     ],
+    importScripts: [],
     stripPrefix: '.',
     runtimeCaching: [{
       urlPattern: /^https:\/\/whitehouseengineer\.firebaseapp\.com/,
@@ -102,7 +104,7 @@ gulp.task('serve', ['sass', 'fonts', 'generate-sw'], function() {
 });
 
 gulp.task('build', function(callback) {
-  runSequence('sass', 'fonts', 'generate-sw', 'clean', 'copy-files', callback);
+  runSequence('clean', 'sass', 'fonts', 'generate-sw', 'copy-files', callback);
 });
 
 gulp.task('default', ['serve']);

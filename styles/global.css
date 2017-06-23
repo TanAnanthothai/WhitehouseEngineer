@@ -2323,3 +2323,11 @@
   margin: 0;
   overflow: visible;
   clip: auto; }
+
+a.nav__item {
+  font-weight: 400;
+  font-size: 20px;
+  margin: 0;
+  color: white;
+  padding-right: 15px;
+  text-decoration: none; }
