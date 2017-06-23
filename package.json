@@ -4,7 +4,10 @@
   "version": "0.0.1",
   "private": true,
   "license": "UNLICENSED",
-  "scripts": {},
+  "scripts": {
+    "start": "gulp",
+    "deploy": "firebase deploy"
+  },
   "devDependencies": {
     "browser-sync": "^2.11.2",
     "del": "^2.2.0",
