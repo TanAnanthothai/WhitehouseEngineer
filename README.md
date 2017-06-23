@@ -14,11 +14,11 @@ These instructions will get you a copy of the project up and running on your loc
 1. In the root directory, run `npm install` or `yarn`
 2. The following dependencies should be globally installed. Run the following command to install them.
 ```
-npm install --global gulp-cli sw-precache
+npm install --global gulp-cli sw-precache firebase-tools
 ```
 For developers who prefer Yarn, use the following command instead.
 ```
-yarn global add gulp-cli sw-precache
+yarn global add gulp-cli sw-precache firebase-tools
 ```
 3. Run `npm start` or `yarn start`.
 
@@ -30,6 +30,7 @@ The following table shows all available scripts that facilitate development and 
 | Script   	| Description                                    	|
 |----------	|------------------------------------------------	|
 | `start`  	| Build and serve an application for development 	|
+| `serve` 	| Build and test an application locally           |
 | `deploy` 	| Build and deploy this project to Firebase      	|
 
 > **Note that** you can run these scripts by prepending `yarn run` or `npm run`.

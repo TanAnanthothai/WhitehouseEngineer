@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "gulp",
+    "serve": "gulp build && firebase serve",
     "deploy": "gulp build && firebase deploy"
   },
   "devDependencies": {
