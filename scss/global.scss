@@ -1,0 +1,11 @@
+$fa-font-path: "../fonts";
+@import "./node_modules/font-awesome/scss/font-awesome";
+
+a.nav__item {
+  font-weight: 400;
+  font-size: 20px;
+  margin: 0;
+  color: white;
+  padding-right: 15px;
+  text-decoration: none;
+}
