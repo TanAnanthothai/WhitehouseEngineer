@@ -29,11 +29,11 @@ gulp.task('generate-sw', function() {
     ],
     stripPrefix: '.',
     runtimeCaching: [{
-      urlPattern: /^https:\/\/publicdata-weather\.firebaseio\.com/,
+      urlPattern: /^https:\/\/whitehouseengineer\.firebaseapp\.com/,
       handler: 'networkFirst',
       options: {
         cache: {
-          name: 'weatherData-v3'
+          name: 'fm-v1'
         }
       }
     }]
@@ -54,7 +54,8 @@ gulp.task('serve', ['generate-sw'], function() {
     './scripts/*.js',
     './styles/*.css',
     '!./service-worker.js',
-    '!./gulpfile.js'
+    '!./gulpfile.js',
+    '!./public/**'
   ], ['generate-sw'], browserSync.reload);
 });
 
