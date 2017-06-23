@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/images/clear.png","e17de36d2c2ddf7b068892fa4678cd31"],["/images/cloudy-scattered-showers.png","855f638a52b7fbc1ec2a3d596fedbd28"],["/images/cloudy.png","6b2148e05e5fe4bf2a218438afcb6d3c"],["/images/cloudy_s_sunny.png","827577d4371bd0c83789fac7a2fe1546"],["/images/fog.png","44f56cff88530b5e3315890d6c209ac2"],["/images/ic_add_white_24px.svg","c3379830302abe84f64db87b5bac9faa"],["/images/ic_refresh_white_24px.svg","f73272d4efd233a85e8c649d26126f01"],["/images/partly-cloudy.png","a2e10546a6f7000e1b7d5846ba492f9b"],["/images/rain.png","5a2600b1199d1c95da554a5f97861c04"],["/images/scattered-showers.png","ec178dbbcd45abb9db4be616801df3b0"],["/images/sleet.png","15ee1fe8d87a5b1ca604eb56729f3f08"],["/images/snow.png","6f9fa355f32b353a18a1dd3f89ac3fd7"],["/images/thunderstorm.png","c4df123a44c17a1b5d1e8b33b268ea5c"],["/images/wind.png","c1136285b55a50c206f0a96f64080767"],["/index.html","dd8e6bcb9c5dfe244d646fe4e15a2d38"],["/scripts/app.js","e20515ee5ba2c17432ab941b0e0ee2fa"],["/scripts/localforage-1.4.0.js","e7b60fed032f5137e2e5813d2c06f3a3"],["/styles/ud811.css","3435166fc2f1a5f20b894b19ea1cc9be"],["/styles/ud811.min.css","dce60e984914148140d9a2375a3d75b6"]];
+var precacheConfig = [["/404.html","0a27a4163254fc8fce870c8cc3a3f94f"],["/images/clear.png","e17de36d2c2ddf7b068892fa4678cd31"],["/images/cloudy-scattered-showers.png","855f638a52b7fbc1ec2a3d596fedbd28"],["/images/cloudy.png","6b2148e05e5fe4bf2a218438afcb6d3c"],["/images/cloudy_s_sunny.png","827577d4371bd0c83789fac7a2fe1546"],["/images/fog.png","44f56cff88530b5e3315890d6c209ac2"],["/images/ic_add_white_24px.svg","c3379830302abe84f64db87b5bac9faa"],["/images/ic_refresh_white_24px.svg","f73272d4efd233a85e8c649d26126f01"],["/images/partly-cloudy.png","a2e10546a6f7000e1b7d5846ba492f9b"],["/images/rain.png","5a2600b1199d1c95da554a5f97861c04"],["/images/scattered-showers.png","ec178dbbcd45abb9db4be616801df3b0"],["/images/sleet.png","15ee1fe8d87a5b1ca604eb56729f3f08"],["/images/snow.png","6f9fa355f32b353a18a1dd3f89ac3fd7"],["/images/thunderstorm.png","c4df123a44c17a1b5d1e8b33b268ea5c"],["/images/wind.png","c1136285b55a50c206f0a96f64080767"],["/index-firebase-default.html","a9f54e1a25641dc4dd48796282fd8d37"],["/index.html","451b4f662c1085598b5e8b51d344e9a7"],["/scripts/app.js","e20515ee5ba2c17432ab941b0e0ee2fa"],["/scripts/localforage-1.4.0.js","e7b60fed032f5137e2e5813d2c06f3a3"],["/styles/ud811.css","61290e68003651024d0b127184d06548"],["/styles/ud811.min.css","495c1aac447976894019c60d7d111c45"]];
 var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
 
 
@@ -285,7 +285,7 @@ self.addEventListener('fetch', function(event) {
 
 // Runtime cache configuration, using the sw-toolbox library.
 
-toolbox.router.get(/^https:\/\/publicdata-weather\.firebaseio\.com/, toolbox.networkFirst, {"cache":{"name":"weatherData-v3"}});
+toolbox.router.get(/^https:\/\/whitehouseengineer\.firebaseapp\.com/, toolbox.networkFirst, {"cache":{"name":"fm-v1"}});
 
 
 

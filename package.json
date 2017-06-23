@@ -6,16 +6,20 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "gulp",
-    "deploy": "firebase deploy"
+    "deploy": "gulp build && firebase deploy"
   },
   "devDependencies": {
     "browser-sync": "^2.11.2",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
+    "gulp-changed": "^3.1.0",
     "gulp-minify-css": "^1.2.4",
+    "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.2.0",
+    "gulp-src-ordered-globs": "^1.0.3",
+    "run-sequence": "^1.2.2",
     "sw-precache": "^5.2.0"
   }
 }

@@ -1,5 +1,7 @@
-
 # Created by https://www.gitignore.io/api/node,macos
+
+### Firebase ###
+public/
 
 ### macOS ###
 *.DS_Store
