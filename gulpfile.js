@@ -71,11 +71,16 @@ gulp.task('generate-sw', function() {
   return swPrecache.write('./service-worker.js', swOptions);
 });
 
+gulp.task('fonts', function() {
+  return gulp.src('node_modules/font-awesome/fonts/*')
+    .pipe(gulp.dest('fonts'))
+})
+
 gulp.task('clean', function() {
   return del.sync(cleanFilesList);
 });
 
-gulp.task('serve', ['sass', 'generate-sw'], function() {
+gulp.task('serve', ['sass', 'fonts', 'generate-sw'], function() {
   gulp.watch('./scss/*.scss', ['sass']);
   browserSync({
     notify: false,
@@ -86,6 +91,7 @@ gulp.task('serve', ['sass', 'generate-sw'], function() {
     open: false
   });
   gulp.watch([
+    './fonts/**',
     './*.html',
     './scripts/*.js',
     './styles/*.css',
@@ -96,7 +102,7 @@ gulp.task('serve', ['sass', 'generate-sw'], function() {
 });
 
 gulp.task('build', function(callback) {
-  runSequence('sass', 'generate-sw', 'clean', 'copy-files', callback);
+  runSequence('sass', 'fonts', 'generate-sw', 'clean', 'copy-files', callback);
 });
 
 gulp.task('default', ['serve']);
