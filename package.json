@@ -1,0 +1,18 @@
+{
+  "name": "flood-management-app",
+  "description": "Flood Management Progressive Web Application - PWA Online Hackathon 2017",
+  "version": "0.0.1",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {},
+  "devDependencies": {
+    "browser-sync": "^2.11.2",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "sw-precache": "^5.2.0"
+  }
+}
