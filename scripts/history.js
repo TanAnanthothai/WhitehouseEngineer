@@ -1,33 +1,42 @@
-window.localforage.getItem('gameHistory', function(err, gameHistory) {
-  gameHistory; //array of game object (look in game.js)
-  console.log(gameHistory);
-  console.log("LENGTH " + Object.keys(gameHistory).length);
-  console.log(gameHistory[0]['fullScore']);
-  console.log(gameHistory[0]['questions']);
-  console.log(Object.keys(gameHistory[0]['questions']).length);
-  console.log(gameHistory[0]['fullScore']);
-  console.log(gameHistory[0]['fullScore']);
-
-  for (var i = Object.keys(gameHistory).length - 1; i >= 0; i--) {
-    console.log("i = " + i);
-    console.log(date);
-    var date = new Date(gameHistory[i]['timestamp']);
-    console.log(timeSince(date));
-    // var datetime = convertTime(gameHistory[i]['timestamp'], '/');
-
-    var innerDiv = document.getElementById('container-history');
-    // innerDiv.appendChild("TEST");
-    var line = document.createElement("p");
-    line.innerHTML = `<div class="card">
-        <h4 class="card-title" style="margin-bottom: 0;">Game # ` + i + `
-          <span class="mb-2 text-muted pull-right">score ` + gameHistory[i]['score'] + `/` + gameHistory[i]['fullScore'] + `</span>
-        </h4>
-        <p class="card-text" style="margin-bottom: 0;">make up the bulk of the card's content.</p>
-        <span><span class="pull-right">` + timeSince(date) + `</span></span>
-    </div>`;
-    innerDiv.appendChild(line);
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    listHistory(user.uid)
+  } else {
+    // No user is signed in.
   }
-})
+});
+
+var listHistory = function(userID) {
+  window.localforage.getItem(userID, function(err, gameHistory) {
+    gameHistory; //array of game object (look in game.js)
+    console.log(gameHistory);
+
+    x = 1;
+    if (gameHistory != null && Object.keys(gameHistory).length > 0) {
+      for (var i = Object.keys(gameHistory).length - 1; i >= 0; i--) {
+        console.log("i = " + i);
+        var date = new Date(gameHistory[i]['timestamp']);
+        console.log(timeSince(date));
+        // var datetime = convertTime(gameHistory[i]['timestamp'], '/');
+
+        x = x + i;
+        var innerDiv = document.getElementById('container-history');
+        // innerDiv.appendChild("TEST");
+        var line = document.createElement("p");
+        line.innerHTML = `<a href="/history-vocab.html?key=` + i + `"><div class="card">
+          <h4 class="card-title" style="margin-bottom: 0;">Game # ` + x + `
+            <span class="mb-2 text-muted pull-right">score ` + gameHistory[i]['score'] + `/` + gameHistory[i]['fullScore'] + `</span>
+          </h4>
+          <p class="card-text" style="margin-bottom: 0;">make up the bulk of the card's content.</p>
+          <span><span class="pull-right">` + timeSince(date) + `</span></span>
+      </div></a>`;
+        innerDiv.appendChild(line);
+      }
+    }
+
+  })
+}
 
 var convertTime = function(timestamp, separator) {
   var pad = function(input) {
@@ -67,7 +76,7 @@ function getDuration(seconds) {
 };
 
 function timeSince(date) {
-  var seconds = Math.floor((new Date() - new Date(date)) / 1000);
+  var seconds = Math.floor((new Date() - new Date(date*1000)) / 1000);
   var duration = getDuration(seconds);
   var suffix = (duration.interval > 1 || duration.interval === 0) ? 's' : '';
   return duration.interval + ' ' + duration.epoch + suffix;
