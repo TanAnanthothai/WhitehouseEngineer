@@ -1,7 +1,15 @@
-var user = firebase.auth().currentUser;
+checkAuth = function() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // console.log('pass');
+    } else {
+      window.location = '/index.html';
+    }
+  }, function(error) {
+    console.log(error);
+  });
+};
 
-if (user) {
-  // Do it!
-} else {
-  window.location = '/index.html';
-}
+window.addEventListener('load', function() {
+  checkAuth();
+});
