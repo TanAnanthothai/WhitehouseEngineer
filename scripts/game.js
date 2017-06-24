@@ -3,7 +3,7 @@ class game {
     this.questions = [];
     this.score = 0;
     this.fullScore = 0;
-    this.timestamp = +new Date();
+    this.timestamp = Math.floor((+new Date())/1000);
     this.latitude = latitude;
     this.longitude = longitude;
   }

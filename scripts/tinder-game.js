@@ -6,6 +6,43 @@ var currentQuestion;
 var currentGame;
 var isEnd = false;
 
+// legacy function when single word list with lat long is attempted first before all lists are loaded
+// function initializeGame(callback) {
+//     questionNumber = 0;
+//     score = 0;
+//     currentQuestion = null;
+//     currentGame = new game();
+//     isEnd = false;
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(function(position) {
+//             lat = position.coords.latitude;
+//             long = position.coords.longitude;
+//             console.log(lat);
+//             console.log(long);
+//             getWords(lat, long).then(function(words) {
+//                 if(words.val() !== null){
+//                     dictionary = words.val();
+//                     wordList = shuffleArray(Object.keys(dictionary));
+//                     callback();
+//                 }else{
+//                     getAllWordLists().then(function(result){
+//                         allWordLists = result.val();
+//                         allWordListsLatKey = Object.keys(allWordLists);
+//                         let randomLat = Math.floor(Math.random()*allWordListsLatKey.length);
+//                         allWordListsLongKey = Object.keys(allWordLists[allWordListsLatKey[randomLat]]);
+//                         let randomLong = Math.floor(Math.random()*allWordListsLongKey.length);
+//                         dictionary = allWordLists[allWordListsLatKey[randomLat]][allWordListsLongKey[randomLong]];
+//                         wordList = shuffleArray(Object.keys(dictionary));
+//                         callback();
+//                     })
+//                 }
+//             });
+//         });
+//     } else {
+//         console.log("Geolocation is not supported by this browser.");
+//     }
+// }
+
 function initializeGame(callback) {
   questionNumber = 0;
   score = 0;
@@ -14,27 +51,26 @@ function initializeGame(callback) {
   isEnd = false;
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      lat = position.coords.latitude;
-      long = position.coords.longitude;
+      lat = processGeovalue(position.coords.latitude);
+      long = processGeovalue(position.coords.longitude);
       console.log(lat);
       console.log(long);
-      getWords(lat, long).then(function(words) {
-        if(words.val() !== null){
-          dictionary = words.val();
-          wordList = shuffleArray(Object.keys(dictionary));
-          callback();
+      getAllWordLists().then(function(result){
+        allWordLists = result.val();
+        if(allWordLists[lat][long] !== null && allWordLists[lat][long] !== undefined){
+          dictionary = allWordLists[lat][long];
         }else{
-          getAllWordLists().then(function(result){
-            allWordLists = result.val();
-            allWordListsLatKey = Object.keys(allWordLists);
-            let randomLat = Math.floor(Math.random()*allWordListsLatKey.length);
-            allWordListsLongKey = Object.keys(allWordLists[allWordListsLatKey[randomLat]]);
-            let randomLong = Math.floor(Math.random()*allWordListsLongKey.length);
-            dictionary = allWordLists[allWordListsLatKey[randomLat]][allWordListsLongKey[randomLong]];
-            wordList = shuffleArray(Object.keys(dictionary));
-            callback();
-          })
+          allWordListsLatKey = Object.keys(allWordLists);
+          let randomLat = Math.floor(Math.random()*allWordListsLatKey.length);
+          console.log('get random lat');
+          allWordListsLongKey = Object.keys(allWordLists[allWordListsLatKey[randomLat]]);
+          let randomLong = Math.floor(Math.random()*allWordListsLongKey.length);
+          console.log('get random long');
+          dictionary = allWordLists[allWordListsLatKey[randomLat]][allWordListsLongKey[randomLong]];
         }
+        wordList = shuffleArray(Object.keys(dictionary));
+        console.log('before callback');
+        callback();
       });
     });
   } else {
@@ -62,7 +98,7 @@ function getNextQuestion() {
   var no_answer = false;
   var yes_answer = true;
   var random = questionNumber;
-  if (Math.random() >= 0.8) {
+  if (Math.random() >= 0.8 && wordList.length > 1) {
     while (true) {
       random = Math.floor(Math.random() * wordList.length);
       if (random != questionNumber)
