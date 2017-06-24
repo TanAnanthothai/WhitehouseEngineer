@@ -1,12 +1,12 @@
 $(document).ready(function(event) {
-	
+
 	$("div#swipe_like").on( "click", function() {
 		swipeLike();
-	});	
+	});
 
 	$("div#swipe_dislike").on( "click", function() {
 		swipeDislike();
-	});	
+	});
 
 	addNewProfile();
 
@@ -15,7 +15,7 @@ $(document).ready(function(event) {
 		   	throwProps:true,
 		   	onDragEnd:function(endX) {
 	   			if(Math.round(this.endX) > 0 ) {
-	   				swipeLike();			
+	   				swipeLike();
 	   			}
 	   			else {
 	   				swipeDislike();
@@ -26,7 +26,7 @@ $(document).ready(function(event) {
 	}
 
 	function swipeLike() {
-		
+
 			var $photo = $("div.content").find('#photo');
 
 			var swipe = new TimelineMax({repeat:0, yoyo:false, repeatDelay:0, onComplete:remove, onCompleteParams:[$photo]});
@@ -36,7 +36,7 @@ $(document).ready(function(event) {
 	}
 
 	function swipeDislike() {
-		
+
 			var $photo = $("div.content").find('#photo');
 
 			var swipe = new TimelineMax({repeat:0, yoyo:false, repeatDelay:0, onComplete:remove, onCompleteParams:[$photo]});
@@ -54,11 +54,11 @@ $(document).ready(function(event) {
 		var ages = ['19','22','18','27','21', '18', '24'][Math.floor(Math.random() * 7)]
 		var photos = ['1', '2', '3', '4', '5', '6', '7'][Math.floor(Math.random() * 7)]
 		$("div.content").prepend('<div class="photo" id="photo" style="background-image:url(http://web.arjentienkamp.com/codepen/tinder/photo'+photos+'.jpg)">'
-    	+ '<span class="meta">' 
-    	+ '<p>'+names+', '+ages+'</p>' 
-    	+ '<span class="moments">0</span>' 
-    	+ '<span class="users">0</span>' 
-    	+ '</span>' 
+    	// + '<span class="meta">'
+    	// + '<p>'+names+', '+ages+'</p>'
+    	// + '<span class="moments">0</span>'
+    	// + '<span class="users">0</span>'
+    	// + '</span>'
     	+ '</div>');
 
     	swipe();
