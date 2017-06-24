@@ -114,7 +114,9 @@ function uploadImage(file) {
 }
 
 function insertData(user, vocab, image, latitude, longitude) {
-  var firebaseRef = firebase.database().ref("words");
+  latitude = latitude * 1000;
+  longitude = longitude * 1000;
+  var firebaseRef = firebase.database().ref("words/" + latitude);
   firebaseRef.push({
     user: user,
     vocab: vocab,

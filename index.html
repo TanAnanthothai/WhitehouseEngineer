@@ -5,16 +5,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="English Der App for UD811">
+  <meta name="description" content="EnglishDer App">
   <title>English Der</title>
-  <link rel="stylesheet" type="text/css" href="/styles/global.css">
-  <link rel="stylesheet" type="text/css" href="/styles/ud811.css">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" type="text/css" href="/styles/global.min.css">
+  <link rel="stylesheet" type="text/css" href="/styles/ud811.min.css">
+  <link rel="stylesheet" type="text/css" href="/styles/login.min.css">
 
   <!-- manifest and meta theme color -->
   <link rel="manifest" href="/manifest.json">
@@ -51,48 +46,22 @@
     <button id="butAdd" class="headerButton" aria-label="Add"></button>
   </header>
 
-  <main class="main">
-
-    <!-- Authencation -->
-    <div id="firebaseui-auth-container"></div>
-
-    <!-- Test auth -->
-    <!-- <button id="sign-out">Sign Out</button>
-    <div id="sign-in-status"></div>
-    <div id="sign-in"></div>
-    <div id="account-details"></div> -->
-
-  </main>
-
-  <!-- <div class="dialog-container">
-    <div class="dialog">
-      <div class="dialog-title">Add new city</div>
-      <div class="dialog-body">
-        <select id="selectCityToAdd">
-          <option value="austin">Austin, TX</option>
-          <option value="boston">Boston, MA</option>
-          <option value="chicago">Chicago, IL</option>
-          <option value="portland">Portland, OR</option>
-          <option value="sanfrancisco">San Francisco, CA</option>
-          <option value="seattle">Seattle, WA</option>
-        </select>
-      </div>
-      <div class="dialog-buttons">
-        <button id="butAddCity" class="button">Add</button>
-        <button id="butAddCancel" class="button">Cancel</button>
-      </div>
+  <main>
+    <div class="centered">
+      <h1>อิงลิชเด้อออ</h1>
+      <h4>Login to get more play Der!</h4>
+      <!-- Authencation -->
+      <div id="firebaseui-auth-container"></div>
+      <a id="go-leaderboard" href="leaderboard.html">
+        <i class="fa fa-sign-in" aria-hidden="true"></i> Go to Leaderboard
+      </a>
+      <button id="sign-out">LOGOUT (EXPERIMENTAL)</button>
     </div>
-  </div> -->
-  <!-- <button class="btn btn-3 btn-3e icon-arrow-right">Send data</button> -->
- <!--  <div class="loader">
-    <svg viewBox="0 0 32 32" width="32" height="32">
-      <circle id="ud811Spinner" cx="16" cy="16" r="14" fill="none"></circle>
-    </svg>
-  </div> -->
-
+  </main>
 
   <script src="/scripts/app.js"></script>
   <script src="/scripts/localforage-1.4.0.js"></script>
+  <script scr="/scripts/touch-test.js"></script>
 
 </body>
 </html>

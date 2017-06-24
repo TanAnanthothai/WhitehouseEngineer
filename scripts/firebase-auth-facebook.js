@@ -1,5 +1,6 @@
 var handleSignOut = function () {
   document.getElementById('sign-out').addEventListener('click', function() {
+    document.getElementById('go-leaderboard').style.display = 'none';
     document.getElementById('sign-out').style.display = 'none';
     firebase.auth().signOut();
   });
@@ -18,9 +19,7 @@ var handleSignedIn = function (user) {
       providerData: user.providerData
     }, null, '  ');
     console.log(jsonData);
-    document.getElementById('sign-in-status').textContent = 'Signed in';
-    document.getElementById('sign-in').textContent = 'Sign out';
-    document.getElementById('account-details').textContent = jsonData;
+    document.getElementById('go-leaderboard').style.display = 'block';
     document.getElementById('sign-out').style.display = 'block';
     handleSignOut();
   });
@@ -28,7 +27,7 @@ var handleSignedIn = function (user) {
 
 var handleNotSignedIn = function () {
   var uiConfig = {
-    signInSuccessUrl: '/index.html?message=logged-in',
+    signInSuccessUrl: '/leaderboard.html',
     signInOptions: [
       firebase.auth.FacebookAuthProvider.PROVIDER_ID
     ],
@@ -36,10 +35,6 @@ var handleNotSignedIn = function () {
   };
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   ui.start('#firebaseui-auth-container', uiConfig);
-  document.getElementById('sign-in-status').textContent = 'Signed out';
-  document.getElementById('sign-in').textContent = 'Sign in';
-  document.getElementById('account-details').textContent = 'null';
-
 };
 
 

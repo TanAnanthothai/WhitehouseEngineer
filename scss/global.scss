@@ -4,13 +4,6 @@ $fa-font-path: '../fonts';
 @import './node_modules/font-awesome/scss/font-awesome';
 @import './node_modules/bootstrap/scss/bootstrap.scss';
 
-#firebaseui-auth-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 #sign-out {
   display: none;
 }
