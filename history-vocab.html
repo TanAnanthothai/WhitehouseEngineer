@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Engder App">
+  <title>Engder</title>
+  <link rel="stylesheet" type="text/css" href="/styles/global.css">
+  <link rel="stylesheet" type="text/css" href="/styles/ud811.css">
+  <!-- <link rel="stylesheet" type="text/css" href="/styles/leaderboard.css"> -->
+  <link rel="stylesheet" type="text/css" href="/styles/tinder.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js" charset="utf-8"></script>
+
+  <!-- Firebase Init -->
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+  <script src="/scripts/firebase-init.js"></script>
+
+  <!-- Firebase UI & Authencation -->
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.2.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.2.1/firebaseui.css" />
+  <script src="/scripts/firebase-auth-facebook.js"></script>
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+
+  <!-- manifest and meta theme color -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Add to home screen ffor Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Engder">
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+</head>
+
+<body>
+
+  <header class="header-wrapper">
+    <div class="header-flex-child">
+      <div class="header">
+        <div class="logo">
+          <img src="/images/english-der-logo.png" width="35" />
+        </div>
+        <h1 class="header__title">Engder</h1>
+        <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
+        <button id="butAdd" class="headerButton" aria-label="Add"></button>
+      </div>
+    </div>
+    <div class="menu-flex-child">
+      <div class="menu">
+        <div class="menu-item-flex-child">
+          <div class="menu-item active">
+            <img src="/images/home-icon-active@2x.png" width="19"/>
+            <div class="menu-item-text">Home</div>
+          </div>
+        </div>
+        <div class="menu-item-flex-child">
+          <div class="menu-item">
+            <img src="/images/play-icon-inactive@2x.png" width="14"/>
+            <div class="menu-item-text">Play</div>
+          </div>
+        </div>
+        <div class="menu-item-flex-child">
+          <div class="menu-item">
+            <img src="/images/add-word-icon-inactive@2x.png" width="17"/>
+            <div class="menu-item-text">Add Word</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'> -->
+    <div class="app-wrapper">
+      <div class="question">Is this <strong>your wife</strong>?</div>
+      <div class="app">
+        <div class="content"></div>
+        <div class="content-loader">
+          <div class="photo" id="photo" style="">
+            <img src="/images/loading-placeholder-image@2x.png" width="65"/>
+            <div class="spinner">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
+            </div>
+          </div>
+        </div>
+        <div class="footer" id="footer-history">
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- start here from https://codepen.io/arjentienkamp/pen/MYpYMO-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/utils/Draggable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <script src="/scripts/game.js" charset="utf-8"></script>
+  <script src="/scripts/word.js" charset="utf-8"></script>
+  <script src="/scripts/history-tinder.js"></script>
+  <script src="/scripts/localforage-1.4.0.js"></script>
+
+</body>
+
+</html>
