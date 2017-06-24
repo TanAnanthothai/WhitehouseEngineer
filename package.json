@@ -10,6 +10,7 @@
     "deploy": "gulp build && firebase deploy"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "browser-sync": "^2.11.2",
     "del": "^2.2.0",
     "firebase-functions": "^0.5.7",

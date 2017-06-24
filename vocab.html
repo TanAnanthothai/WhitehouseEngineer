@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EnglishDer App">
+  <title>English Der</title>
+  <link rel="stylesheet" type="text/css" href="/styles/global.min.css">
+  <link rel="stylesheet" type="text/css" href="/styles/ud811.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="/styles/vocab.css">
+  <!-- manifest and meta theme color -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#fbfffe">
+  <!-- Add to home screen ffor Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Weather">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="/images/icons/apple-167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-180.png">
+
+  <!-- Firebase Init -->
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+  <script src="/scripts/firebase-init.js"></script>
+
+  <!-- Firebase UI & Authencation -->
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.2.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.2.1/firebaseui.css" />
+  <script src="/scripts/firebase-auth-facebook.js"></script>
+</head>
+
+<body>
+   <header class="header-wrapper">
+    <div class="header-flex-child">
+      <div class="header">
+        <div class="logo">
+          <img src="/images/english-der-logo.png" width="35" />
+        </div>
+        <h1 class="header__title">อิงลิชเด้อออ</h1>
+        <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
+        <button id="butAdd" class="headerButton" aria-label="Add"></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+    
+    <div class="element-card">
+      <div class="front-facing">
+        <h1 class="abr">Cu</h1>
+        <p class="title">Gopper</p>
+        <span class="atomic-number">29</span>
+        <span class="atomic-mass">63.54</span>
+      </div>
+      <div class="back-facing">
+        <p>Copper is a chemical element with symbol Cu (from Latin: cuprum) and atomic number 29. It is a soft, malleable, and ductile metal with very high thermal and electrical conductivity.</p>
+        <p><a class="btn" href="https://en.wikipedia.org/wiki/Copper" target="_blank">More info</a></p>
+      </div>
+    </div>
+    
+    <div class="element-card">
+      <div class="front-facing">
+        <h1 class="abr">Ag</h1>
+        <p class="title">Silver</p>
+        <span class="atomic-number">47</span>
+        <span class="atomic-mass">107.86</span>
+      </div>
+      <div class="back-facing">
+        <p>Silver is the metallic element with the atomic number 47. Its symbol is Ag, from the Latin argentum, derived from the Greek ὰργὀς, and ultimately from a Proto-Indo-European language root reconstructed as *h2erǵ-, "grey" or "shining".</p>
+        <p><a class="btn" href="https://en.wikipedia.org/wiki/Silver" target="_blank">More info</a></p>
+      </div>
+    </div>
+  </div>
+  </main>
+  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+  <script src="/scripts/vocab.js"></script>
+  <script src="/scripts/app.js"></script>
+  <script src="/scripts/localforage-1.4.0.js"></script>
+  <script scr="/scripts/touch-test.js"></script>
+
+</body>
+</html>
