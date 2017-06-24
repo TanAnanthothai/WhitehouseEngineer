@@ -16,10 +16,25 @@ function initializeGame(callback) {
     navigator.geolocation.getCurrentPosition(function(position) {
       lat = position.coords.latitude;
       long = position.coords.longitude;
+      console.log(lat);
+      console.log(long);
       getWords(lat, long).then(function(words) {
-        dictionary = words.val();
-        wordList = shuffleArray(Object.keys(dictionary));
-        callback();
+        if(words.val() !== null){
+          dictionary = words.val();
+          wordList = shuffleArray(Object.keys(dictionary));
+          callback();
+        }else{
+          getAllWordLists().then(function(result){
+            allWordLists = result.val();
+            allWordListsLatKey = Object.keys(allWordLists);
+            let randomLat = Math.floor(Math.random()*allWordListsLatKey.length);
+            allWordListsLongKey = Object.keys(allWordLists[allWordListsLatKey[randomLat]]);
+            let randomLong = Math.floor(Math.random()*allWordListsLongKey.length);
+            dictionary = allWordLists[allWordListsLatKey[randomLat]][allWordListsLongKey[randomLong]];
+            wordList = shuffleArray(Object.keys(dictionary));
+            callback();
+          })
+        }
       });
     });
   } else {

@@ -1,9 +1,11 @@
 class game {
-  constructor() {
+  constructor(latitude, longitude) {
     this.questions = [];
     this.score = 0;
     this.fullScore = 0;
     this.timestamp = +new Date();
+    this.latitude = latitude;
+    this.longitude = longitude;
   }
   addQuestion(question) {
     this.questions.push(question);
