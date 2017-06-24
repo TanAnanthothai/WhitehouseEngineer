@@ -25,7 +25,6 @@ $(document).ready(function(event) {
 
   function swipeLike() {
     var status = $("div#swipe_like").data('status');
-    console.log(status);
     checkAnswer(status).then(function(current_game_status) {
       console.log(current_game_status);
       var $photo = $("div.content").find('#photo');
@@ -42,14 +41,14 @@ $(document).ready(function(event) {
         ease: Power1.easeInOut
       });
 
-      // addNewProfile();
       addNewQuestion();
+    }, function(error) {
+      console.log(error);
     });
   }
 
   function swipeDislike() {
     var status = $("div#swipe_dislike").data('status');
-    console.log(status);
     checkAnswer(status).then(function(current_game_status) {
       console.log(current_game_status);
       var $photo = $("div.content").find('#photo');
@@ -65,7 +64,10 @@ $(document).ready(function(event) {
         ],
         ease: Power1.easeInOut
       });
-      addNewQuestion();
+
+      addNewQuestion(current_game_status.isNextLast);
+    }, function(error) {
+      console.log(error);
     });
   }
 
@@ -73,46 +75,12 @@ $(document).ready(function(event) {
     $(photo).remove();
   }
 
-  function addNewProfile() {
-    var names = [
-      'Lieke',
-      'Christina',
-      'Sanne',
-      'Soraya',
-      'Chanella',
-      'Larissa',
-      'Michelle'
-    ][Math.floor(Math.random() * 7)];
-    var ages = [
-      '19',
-      '22',
-      '18',
-      '27',
-      '21',
-      '18',
-      '24'
-    ][Math.floor(Math.random() * 7)]
-    var photos = [
-      '1',
-      '2',
-      '3',
-      '4',
-      '5',
-      '6',
-      '7'
-    ][Math.floor(Math.random() * 7)]
-    $("div.content").prepend('<div class="photo" id="photo" style="background-image:url(http://web.arjentienkamp.com/codepen/tinder/photo' + photos + '.jpg)">'
-    // + '<span class="meta">'
-    // + '<p>'+names+', '+ages+'</p>'
-    // + '<span class="moments">0</span>'
-    // + '<span class="users">0</span>'
-    // + '</span>'
-		+ '</div>');
-    swipe();
-  }
-
   function addNewQuestion() {
     var question = getNextQuestion();
+    if (question.isEnd) {
+      console.log('Game End!');
+      return;
+    }
     $("div.content").prepend('<div class="photo" id="photo" style="background-image:url(' + question.question_picture + ')"></div>');
     $(".question").html(question.question_line);
     $("div#swipe_like").data('status', question.yes_button);

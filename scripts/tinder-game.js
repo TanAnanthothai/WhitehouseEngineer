@@ -1,16 +1,23 @@
 var wordList = '';
 var dictionary = '';
-var question = 0;
+var questionNumber = 0;
 var score = 0;
+var currentQuestion;
+var currentGame;
+var isEnd = false;
 
 function initializeGame(callback) {
+  questionNumber = 0;
+  score = 0;
+  currentQuestion = null;
+  currentGame = new game();
+  isEnd = false;
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       lat = position.coords.latitude;
       long = position.coords.longitude;
       getWords(lat, long).then(function(words) {
         dictionary = words.val();
-        console.log(dictionary);
         wordList = shuffleArray(Object.keys(dictionary));
         callback();
       });
@@ -35,21 +42,29 @@ function shuffleArray(a) {
 }
 
 function getNextQuestion() {
+  if (isEnd)
+    return {isEnd: true};
   var no_answer = false;
   var yes_answer = true;
-  var random = question;
+  var random = questionNumber;
   if (Math.random() >= 0.8) {
     while (true) {
       random = Math.floor(Math.random() * wordList.length);
-      if (random != question)
+      if (random != questionNumber)
         break;
       }
     no_answer = true;
     yes_answer = false;
   }
+  let correctWord = wordList[questionNumber];
+  let questionWord = wordList[random];
+  let imageUrl = dictionary[wordList[questionNumber]]['imageUrl'][Math.floor(Math.random() * dictionary[wordList[questionNumber]]['imageUrl'].length)];
+  let definition = dictionary[wordList[questionNumber]]['definition'];
+  currentQuestion = new question(correctWord, questionWord, imageUrl, false, definition);
+
   let question_obj = {
-    question_picture: dictionary[wordList[question]]['imageUrl'][Math.floor(Math.random() * dictionary[wordList[question]]['imageUrl'].length)],
-    question_line: "Is this <strong>" + wordList[random] + "</strong>",
+    question_picture: imageUrl,
+    question_line: "Is this <strong>" + questionWord + "</strong>?",
     no_button: no_answer,
     yes_button: yes_answer
   };
@@ -59,32 +74,43 @@ function getNextQuestion() {
 function displayQuestion() {
   var no_answer = false;
   var yes_answer = true;
-  var random = question;
+  var random = questionNumber;
   if (Math.random() >= 0.8) {
     while (true) {
       random = Math.floor(Math.random() * wordList.length);
-      if (random != question)
+      if (random != questionNumber)
         break;
       }
     no_answer = true;
     yes_answer = false;
   }
-  document.getElementById("question_picture").src = dictionary[wordList[question]]['imageUrl'][Math.floor(Math.random() * dictionary[wordList[question]]['imageUrl'].length)];
-  document.getElementById("question_line").innerHTML = "Is this <strong>" + wordList[random] + "</strong>?";
+  let correctWord = wordList[questionNumber];
+  let questionWord = wordList[random];
+  let imageUrl = dictionary[wordList[questionNumber]]['imageUrl'][Math.floor(Math.random() * dictionary[wordList[questionNumber]]['imageUrl'].length)];
+  let definition = dictionary[wordList[questionNumber]]['definition'];
+  currentQuestion = new question(correctWord, questionWord, imageUrl, false, definition);
+  document.getElementById("question_picture").src = imageUrl;
+  document.getElementById("question_line").innerHTML = "Is this <strong>" + questionWord + "</strong>?";
   document.getElementById("no_button").setAttribute("onclick", "nextQuestion(" + no_answer + ")");
   document.getElementById("yes_button").setAttribute("onclick", "nextQuestion(" + yes_answer + ")");
 }
 
 function checkAnswer(answer) {
   return new Promise((resolve, reject) => {
-    var isEnd = false;
+    if (isEnd) {
+      reject("Game is end!");
+      return;
+    }
+    currentQuestion.correct = answer;
+    currentGame.addQuestion(currentQuestion);
     if (answer) {
       score++;
     }
-    if (question === wordList.length) {
+    if (questionNumber === wordList.length - 1) {
       isEnd = true;
+      saveGame(currentGame, 'usertest');
     } else {
-      question++;
+      questionNumber++;
     }
     let current_status = {
       score: score,
@@ -95,15 +121,18 @@ function checkAnswer(answer) {
 }
 
 function nextQuestion(answer) {
+  currentQuestion.correct = answer;
+  currentGame.addQuestion(currentQuestion);
   if (answer) {
     score++;
   }
-  if (question === wordList.length) {
+  if (questionNumber === wordList.length) {
     //end of game display score
     console.log('end of game');
     console.log('you got: ' + score);
+    saveGame(currentGame, 'usertest');
     return;
   }
   displayQuestion();
-  question++;
+  questionNumber++;
 }

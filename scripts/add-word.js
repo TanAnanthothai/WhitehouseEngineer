@@ -6,6 +6,7 @@ $(function() {
 var position_latitude = '';
 var position_longitude = '';
 var image_path = '';
+var localstream = '';
 
 function submitOnClick() {
   console.log("on click submit");
@@ -36,6 +37,7 @@ function getImageFromCamera() {
       video: true
     }).then(function(stream) {
       video.src = window.URL.createObjectURL(stream);
+      localstream = stream;
       video.play();
     });
   }
@@ -47,9 +49,25 @@ function getImageFromCamera() {
 
   // Trigger photo take
   document.getElementById("snap").addEventListener("click", function() {
-    context.drawImage(video, 0, 0, 200, 200);
+    // context.drawImage(video, 0, 0, 100, 200);
+    canvas.style.display = 'block';
+    context.drawImage(video, 0, 0, 250, 250)
+    video.pause();
+    video.src = "";
+    video.style.display = "none";
+    localstream.getTracks()[0].stop();
+    this.style.display = 'none';
+    document.getElementById("re-snap").style.display = 'block';
   });
 }
+
+document.getElementById("re-snap").addEventListener("click", function() {
+  video.style.display = "block";
+  document.getElementById('canvas').style.display = 'none';
+  this.style.display = 'none';
+  document.getElementById("snap").style.display = 'block';
+  getImageFromCamera();
+});
 
 function getLocation() {
   if (navigator.geolocation) {
