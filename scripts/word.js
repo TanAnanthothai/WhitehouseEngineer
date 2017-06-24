@@ -1,12 +1,15 @@
 function submitWord(file, word, lat, long, definition = '') {
+  $('#cssload-pgloading').show();
     return new Promise(function (result) {
             if (typeof file == "string") {
                 uploadImageBlob(file).then(function (imageUrl) {
                     addWord(word, lat, long, imageUrl, definition);
+                    $('#cssload-pgloading').hide();
                 });
             } else {
                 uploadImageT(file).then(function (imageUrl) {
                     addWord(word, lat, long, imageUrl, definition);
+                    $('#cssload-pgloading').hide();
                 });
             }
             result();
