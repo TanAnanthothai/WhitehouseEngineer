@@ -27,6 +27,25 @@ function submitOnClick() {
 
 }
 
+function gotDevices(deviceInfos) {
+  for (var i = 0; i !== deviceInfos.length; ++i) {
+    var deviceInfo = deviceInfos[i];
+    var option = document.createElement('option');
+    option.value = deviceInfo.deviceId;
+    if (deviceInfo.kind === 'audioinput') {
+      option.text = deviceInfo.label ||
+        'microphone ' + (audioSelect.length + 1);
+      audioSelect.appendChild(option);
+    } else if (deviceInfo.kind === 'videoinput') {
+      option.text = deviceInfo.label || 'camera ' +
+        (videoSelect.length + 1);
+      videoSelect.appendChild(option);
+    } else {
+      console.log('Found ome other kind of source/device: ', deviceInfo);
+    }
+  }
+}
+
 function getImageFromCamera() {
   var video = document.getElementById('video');
 
@@ -51,7 +70,7 @@ function getImageFromCamera() {
   document.getElementById("snap").addEventListener("click", function() {
     // context.drawImage(video, 0, 0, 100, 200);
     canvas.style.display = 'block';
-    context.drawImage(video, 0, 0, 250, 250)
+    context.drawImage(video, 0, 0, 300, 300)
     video.pause();
     video.src = "";
     video.style.display = "none";
@@ -64,6 +83,7 @@ function getImageFromCamera() {
 document.getElementById("re-snap").addEventListener("click", function() {
   video.style.display = "block";
   document.getElementById('canvas').style.display = 'none';
+  document.getElementById('show-image').style.display = 'none';
   this.style.display = 'none';
   document.getElementById("snap").style.display = 'block';
   getImageFromCamera();
