@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Weather App for UD811">
+  <title>Words | English Der</title>
+  <link rel="stylesheet" type="text/css" href="/styles/global.css">
+   <link rel="stylesheet" type="text/css" href="/styles/index_leaderboard.css">
+  <link rel="stylesheet" type="text/css" href="/styles/ud811.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <!-- Firebase Init -->
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+  <script src="/scripts/firebase-init.js"></script>
+
+  <!-- Firebase UI & Authencation -->
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.2.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.2.1/firebaseui.css" />
+  <script src="/scripts/firebase-auth-facebook.js"></script>
+
+</head>
+
+<body>
+
+  <header class="header">
+    <!-- <a class="nav__item" href="/sign-up.html">Sign-up</a> -->
+    <h1 class="header__title">Words | English Der</h1>
+    <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
+    <button id="butAdd" class="headerButton" aria-label="Add"></button>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="row justify-content-center">
+        <form>
+          <input type="file" class="form-control-file" name="image" value="">
+          <input type="text" class="form-control form-control-lg" name="vocab" value="">
+          <button class="btn btn-success" type="button" onclick="submitOnClick()">ADD</button>
+        </form>
+      </div>
+      <div class="row justify-content-center">
+        <div id="currentLocation"></div>
+        <button class="btn btn-primary" type="button" onclick="getLocation()">UPDATE CURRENT LOCATION</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="/scripts/add-word.js" charset="utf-8"></script>
+
+</body>
+</html>

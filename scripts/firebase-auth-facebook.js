@@ -42,6 +42,7 @@ var handleNotSignedIn = function () {
 
 };
 
+
 initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -55,5 +56,5 @@ initApp = function() {
 };
 
 window.addEventListener('load', function() {
-  initApp()
+  initApp();
 });

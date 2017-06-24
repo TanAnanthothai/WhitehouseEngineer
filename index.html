@@ -11,6 +11,12 @@
    <link rel="stylesheet" type="text/css" href="/styles/index_leaderboard.css">
   <link rel="stylesheet" type="text/css" href="/styles/ud811.css">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js" charset="utf-8"></script>
+
   <!-- manifest and meta theme color -->
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#2F3BA2">
@@ -37,15 +43,13 @@
 </head>
 <body>
 
-  <header class="header">
-    <!-- <a class="nav__item" href="/sign-up.html">Sign-up</a> -->
-    <h1 class="header__title">English Der</h1>
-    <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
-    <button id="butAdd" class="headerButton" aria-label="Add"></button>
-  </header>
+    <header class="header">
+      <h1 class="header__title">English Der</h1>
+      <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
+      <button id="butAdd" class="headerButton" aria-label="Add"></button>
+    </header>
 
   <main class="main">
-
     <!-- Leaderboard -->
     <div class="leaderboard">
       <h1>
@@ -86,6 +90,7 @@
     <!-- Authencation -->
     <div id="firebaseui-auth-container"></div>
 
+    <!-- Test auth -->
     <button id="sign-out">Sign Out</button>
     <div id="sign-in-status"></div>
     <div id="sign-in"></div>
@@ -93,7 +98,7 @@
 
   </main>
 
-  <div class="dialog-container">
+  <!-- <div class="dialog-container">
     <div class="dialog">
       <div class="dialog-title">Add new city</div>
       <div class="dialog-body">
@@ -111,7 +116,7 @@
         <button id="butAddCancel" class="button">Cancel</button>
       </div>
     </div>
-  </div>
+  </div> -->
 
  <!--  <div class="loader">
     <svg viewBox="0 0 32 32" width="32" height="32">
