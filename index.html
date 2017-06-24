@@ -5,14 +5,15 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="English Der App for UD811">
+  <meta name="description" content="EnglishDer App">
   <title>English Der</title>
-  <link rel="stylesheet" type="text/css" href="/styles/global.css">
-  <link rel="stylesheet" type="text/css" href="/styles/login.css">
+  <link rel="stylesheet" type="text/css" href="/styles/global.min.css">
+  <link rel="stylesheet" type="text/css" href="/styles/ud811.min.css">
+  <link rel="stylesheet" type="text/css" href="/styles/login.min.css">
 
   <!-- manifest and meta theme color -->
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#2F3BA2">
+  <meta name="theme-color" content="#fbfffe">
   <!-- Add to home screen ffor Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -36,9 +37,18 @@
 </head>
 <body>
 
+  <header class="header">
+    <div class="logo">
+      <img src="/images/english-der-logo.png" width="35"/>
+    </div>
+    <h1 class="header__title">อิงลิชเด้อออ</h1>
+    <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
+    <button id="butAdd" class="headerButton" aria-label="Add"></button>
+  </header>
+
   <main>
     <div class="centered">
-      <h1>English Der</h1>
+      <h1>อิงลิชเด้อออ</h1>
       <h4>Login to get more play Der!</h4>
       <!-- Authencation -->
       <div id="firebaseui-auth-container"></div>
