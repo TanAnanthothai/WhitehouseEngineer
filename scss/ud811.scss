@@ -32,6 +32,21 @@ body {
   background: #fbfafa;
 }
 
+.header-wrapper {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 4px #cccccc;
+}
+
+.header-flex-child {
+  max-width: 900px;
+  width: 100%;
+  height: 56px;
+}
+
 .header {
   @extend ._font-heading;
   width: 100%;
@@ -41,7 +56,6 @@ body {
   position: fixed;
   font-size: 20px;
   // border-bottom: 1px solid rgb(231, 231, 231);
-  box-shadow: 0 0 4px #cccccc;
   padding: 0 16px;
   will-change: transform;
   display: flex;
@@ -130,7 +144,7 @@ body {
 }
 
 .main {
-  padding-top: 60px;
+  padding-top: 20px;
   flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
