@@ -1,5 +1,6 @@
 var handleSignOut = function () {
   document.getElementById('sign-out').addEventListener('click', function() {
+    document.getElementById('go-leaderboard').style.display = 'none';
     document.getElementById('sign-out').style.display = 'none';
     firebase.auth().signOut();
   });
@@ -18,7 +19,8 @@ var handleSignedIn = function (user) {
       providerData: user.providerData
     }, null, '  ');
     console.log(jsonData);
-    document.getElementById('sign-in').style.display = 'block';
+    document.getElementById('go-leaderboard').style.display = 'block';
+    document.getElementById('sign-out').style.display = 'block';
     handleSignOut();
   });
 };
