@@ -20,7 +20,7 @@ function addWord(word, lat, long, imageUrl, definition = ''){
     return new Promise(function(result){
         let latitude = processGeovalue(lat);
         let longitude = processGeovalue(long);
-        firebase.database().ref(latitude + '/' + longitude + '/' + 'words/' + word).transaction(function(currentWord){
+        firebase.database().ref('words/' + latitude + '/' + longitude + '/' + word).transaction(function(currentWord){
             if(currentWord === null){
                 return {
                     word: word,
@@ -105,5 +105,5 @@ function uploadImageT(file) {
 function getWords(lat, long){
     let latitude = processGeovalue(lat);
     let longitude = processGeovalue(long);
-    return firebase.database().ref(latitude + '/' + longitude + '/words').once('value');
+    return firebase.database().ref('words/' + latitude + '/' + longitude).once('value');
 }
