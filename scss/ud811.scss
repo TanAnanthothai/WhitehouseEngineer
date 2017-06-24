@@ -39,6 +39,10 @@ body {
   &.collapse-header {
     top: -56px;
   }
+
+  &.-no-menu {
+    height: 56px;
+  }
 }
 
 .header-flex-child {
