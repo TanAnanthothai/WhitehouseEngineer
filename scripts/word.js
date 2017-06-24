@@ -1,6 +1,6 @@
 function submitWord(file, word, lat, long, definition = ''){
     return new Promise(function(result){
-            uploadImage(file).then(function(imageUrl){
+            uploadImageT(file).then(function(imageUrl){
                 addWord(word, lat, long, imageUrl, definition);
             });
             result();
@@ -18,9 +18,9 @@ function submitWord(file, word, lat, long, definition = ''){
  */
 function addWord(word, lat, long, imageUrl, definition = ''){
     return new Promise(function(result){
-        let latitude = processGeovalue(latitude);
-        let longitude = processGeovalue(longitude);
-        firebase.database().ref(latitude + '/' + longtitude + '/' + 'words/' + word).transaction(function(currentWord){
+        let latitude = processGeovalue(lat);
+        let longitude = processGeovalue(long);
+        firebase.database().ref(latitude + '/' + longitude + '/' + 'words/' + word).transaction(function(currentWord){
             if(currentWord === null){
                 return {
                     word: word,
@@ -47,7 +47,7 @@ function processGeovalue(value){
  * @param file : image file
  * @returns {Promise}
  */
-function uploadImage(file) {
+function uploadImageT(file) {
     return new Promise(function(path) {
 
         // Create a root reference
@@ -62,7 +62,7 @@ function uploadImage(file) {
         var uploadTask = storageRef.child(file.name).put(file, metadata);
 
         // Listen for state changes, errors, and completion of the upload.
-        uploadTask.once(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
             function(snapshot) {
                 // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -100,4 +100,10 @@ function uploadImage(file) {
                 path(downloadURL);
             });
     });
+}
+
+function getWords(lat, long){
+    let latitude = processGeovalue(lat);
+    let longitude = processGeovalue(long);
+    return firebase.database().ref(latitude + '/' + longitude + '/words').once('value');
 }
