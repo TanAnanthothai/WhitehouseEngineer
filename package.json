@@ -12,6 +12,7 @@
   "devDependencies": {
     "browser-sync": "^2.11.2",
     "del": "^2.2.0",
+    "firebase-functions": "^0.5.7",
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",

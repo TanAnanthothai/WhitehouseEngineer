@@ -2,11 +2,13 @@ $fa-font-path: "../fonts";
 @import "./node_modules/font-awesome/scss/font-awesome";
 @import "./node_modules/bootstrap/scss/bootstrap.scss";
 
-a.nav__item {
-  font-weight: 400;
-  font-size: 20px;
-  margin: 0;
-  color: white;
-  padding-right: 15px;
-  text-decoration: none;
+#firebaseui-auth-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#sign-out {
+  display: none;
 }
