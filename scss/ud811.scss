@@ -61,6 +61,10 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  a {
+    text-decoration: none!important;
+  }
 }
 
 .menu-item-flex-child {
@@ -69,16 +73,25 @@ body {
 }
 
 .menu-item {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   height: 100%;
   color: #9E9E9E;
+  border-bottom: 4px solid #ffffff;
 
   &.active {
     color: #F46500;
     border-bottom: 4px solid #F46500;
+  }
+
+  &:not(.active) {
+    opacity: 0.8;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
