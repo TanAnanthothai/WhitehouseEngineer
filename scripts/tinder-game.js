@@ -159,7 +159,16 @@ function checkAnswer(answer) {
     }
     if (questionNumber === wordList.length - 1) {
       isEnd = true;
-      saveGame(currentGame, 'usertest');
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                saveGame(currentGame, user.uid);
+            } else {
+                // No user is signed in.
+                console.log('user not signed in. game is not saved');
+            }
+        });
+
     } else {
       questionNumber++;
     }
