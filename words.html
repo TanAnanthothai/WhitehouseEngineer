@@ -39,13 +39,18 @@
   <main class="main">
     <div class="container">
       <div class="row justify-content-center">
+        <!-- Camera capture -->
         <video id="video" width="200" height="200" autoplay></video>
         <button id="snap">Snap Photo</button>
         <canvas id="canvas" width="200" height="200"></canvas>
         <form enctype="multipart/form-data">
           <input type="file" class="form-control-file" name="image" accept="image/*;capture=camera">
-          <input type="text" class="form-control form-control-lg" name="vocab">
+          <input id="final_span" type="text" class="form-control form-control-lg" name="vocab">
           <button class="btn btn-success" type="button" onclick="submitOnClick()">ADD</button>
+          <!-- Speech to text -->
+          <div id="info" style="display: none;"></div>
+          <button id="start_button" type="button" onclick="startButton(event)"><img id="start_img" src="mic.gif" alt="Start"></button>
+          <span id="interim_span"></span>
         </form>
       </div>
       <div class="row justify-content-center">
@@ -56,6 +61,7 @@
   </main>
 
   <script src="/scripts/add-word.js" charset="utf-8"></script>
+  <script src="/scripts/web-speech.js" charset="utf-8"></script>
 
 </body>
 </html>
