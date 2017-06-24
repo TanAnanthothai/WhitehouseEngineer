@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="English Der App for UD811">
+  <title>English Der</title>
+  <link rel="stylesheet" type="text/css" href="/styles/global.css">
+  <link rel="stylesheet" type="text/css" href="/styles/ud811.css">
+  <link rel="stylesheet" type="text/css" href="/styles/admin.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js" charset="utf-8"></script>
+
+  <!-- manifest and meta theme color -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2F3BA2">
+  <!-- Add to home screen ffor Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Weather">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="/images/icons/apple-167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-180.png">
+
+  <!-- Firebase Init -->
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+  <script src="/scripts/firebase-init.js"></script>
+
+  <!-- Firebase UI & Authencation -->
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.2.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.2.1/firebaseui.css" />
+  <script src="/scripts/admin-login.js"></script>
+
+</head>
+<body>
+
+    <header class="header">
+      <h1 class="header__title">English Der</h1>
+      <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
+      <button id="butAdd" class="headerButton" aria-label="Add"></button>
+    </header>
+
+  <main class="main">
+    
+    <div class="login">
+    <h1>Admin Login</h1>
+            <input type="email" id="txtEmail" name="txtEmail" placeholder="Email" required="required" />
+            <input type="password" id="txtPassword" name="txtPassword" placeholder="Password" required="required" />
+            <button type="submit" id="btnLogin" name="btnLogin" onclick="admin_login()" class="btn btn-primary btn-block btn-large">Click to Login Der</button>
+    </div>
+  </main>
+  <script src="/scripts/admin-login.js"></script>
+  <script src="/scripts/app.js"></script>
+  <script src="/scripts/localforage-1.4.0.js"></script>
+
+</body>
+</html>
