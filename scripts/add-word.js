@@ -14,9 +14,7 @@ function submitOnClick() {
   // File or Blob named mountains.jpg
   var file = $('input[name="image"]').get(0).files.item(0);
 
-  uploadImage(file).then(function() {
-    insertData('USER01', getVocal, image_path, position_latitude, position_longitude);
-  });
+  submitWord(file, getVocal, position_latitude, position_longitude)
 
 }
 
