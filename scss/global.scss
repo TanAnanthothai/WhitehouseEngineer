@@ -1,6 +1,8 @@
-$fa-font-path: "../fonts";
-@import "./node_modules/font-awesome/scss/font-awesome";
-@import "./node_modules/bootstrap/scss/bootstrap.scss";
+@import 'font';
+
+$fa-font-path: '../fonts';
+@import './node_modules/font-awesome/scss/font-awesome';
+@import './node_modules/bootstrap/scss/bootstrap.scss';
 
 #firebaseui-auth-container {
   position: absolute;

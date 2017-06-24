@@ -1,3 +1,5 @@
+@import 'helper';
+
 * {
   box-sizing: border-box;
 }
@@ -31,22 +33,22 @@ body {
 }
 
 .header {
+  @extend ._font-heading;
   width: 100%;
   height: 56px;
-  color: #FFF;
-  background: #3F51B5;
+  color: #F46500;
+  background: #fbfffe;
   position: fixed;
   font-size: 20px;
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
-    0 2px 9px 1px rgba(0, 0, 0, 0.12),
-    0 4px 2px -2px rgba(0, 0, 0, 0.2);
-  padding: 16px 16px 0 16px;
+  // border-bottom: 1px solid rgb(231, 231, 231);
+  box-shadow: 0 0 4px #cccccc;
+  padding: 0 16px;
   will-change: transform;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: center;
   align-content: center;
   transition: transform 0.233s cubic-bezier(0,0,0.21,1) 0.1s;
   z-index: 1000;
@@ -74,8 +76,10 @@ body {
 
 .header__title {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 19px;
   margin: 0;
+  margin-left: 8px;
+  margin-top: 2px;
   flex: 1;
 }
 
@@ -304,4 +308,10 @@ body {
     }
 
   }
+}
+
+@media (min-width: 450px) {
+  // .header {
+  //   height: 48px;
+  // }
 }
