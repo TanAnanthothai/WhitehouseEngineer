@@ -27,6 +27,7 @@
     "sw-precache": "^5.2.0"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6"
+    "bootstrap": "^4.0.0-alpha.6",
+    "firebase": "^4.1.3"
   }
 }
