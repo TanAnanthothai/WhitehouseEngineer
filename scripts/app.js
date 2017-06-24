@@ -1,7 +1,7 @@
 
 (function() {
   'use strict';
-
+  require('@google-cloud/debug-agent').start({ allowExpressions: true });
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
      .register('/service-worker.js')
