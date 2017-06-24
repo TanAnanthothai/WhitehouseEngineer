@@ -24,7 +24,7 @@ function shuffle(a) {
     return a;
 }
 
-function insertWord(){
+function insertWord(word, definition, lat, long, imageUrl){
     let word = 'deejay';
     let definition = 'ดีเจ';
     let longitude = '103928.10392';
