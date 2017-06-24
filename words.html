@@ -39,9 +39,12 @@
   <main class="main">
     <div class="container">
       <div class="row justify-content-center">
-        <form>
-          <input type="file" class="form-control-file" name="image" value="">
-          <input type="text" class="form-control form-control-lg" name="vocab" value="">
+        <video id="video" width="200" height="200" autoplay></video>
+        <button id="snap">Snap Photo</button>
+        <canvas id="canvas" width="200" height="200"></canvas>
+        <form enctype="multipart/form-data">
+          <input type="file" class="form-control-file" name="image" accept="image/*;capture=camera">
+          <input type="text" class="form-control form-control-lg" name="vocab">
           <button class="btn btn-success" type="button" onclick="submitOnClick()">ADD</button>
         </form>
       </div>
