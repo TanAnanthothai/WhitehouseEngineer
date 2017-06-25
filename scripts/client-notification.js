@@ -53,12 +53,12 @@ messaging.onTokenRefresh(function() {
 
 messaging.onMessage(function(payload) {
   console.log("Message received. ", payload);
-  // const notificationTitle = 'Background Message Title';
-  // const notificationOptions = {
-  //   body: 'Background Message body.',
-  //   icon: '/firebase-logo.png'
-  // };
-  //
-  // return self.registration.showNotification(notificationTitle,
-  //     notificationOptions);
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: '/images/icons/icon-512x512.png'
+  };
+
+  return self.registration.showNotification(notificationTitle,
+      notificationOptions);
 });
