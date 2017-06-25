@@ -1,7 +1,10 @@
 @import 'font';
+@import 'helper';
+// @import 'variable';
 $fa-font-path: '../fonts';
 @import './node_modules/font-awesome/scss/font-awesome';
 @import './node_modules/bootstrap/scss/bootstrap.scss';
+// @import 'variable';
 
 #sign-out {
   display: none;
@@ -20,6 +23,18 @@ $spin-duration: 1s;
   100% {
     transform: rotate(360deg);
   }
+}
+
+.btn-primary {
+  @extend ._font-heading;
+  // background: #F46500!important;
+  background-color: #F46500!important;
+  border-color: #F46500!important;
+}
+
+.btn-link {
+  @extend ._font-heading;
+  color: #868686!important;
 }
 
 .loading {

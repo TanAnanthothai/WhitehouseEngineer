@@ -4,7 +4,7 @@ var questionNumber = 0;
 var score = 0;
 var currentQuestion;
 var currentGame;
-var isEnd = false;
+var isGameEnd = false;
 
 // legacy function when single word list with lat long is attempted first before all lists are loaded
 // function initializeGame(callback) {
@@ -47,7 +47,7 @@ function initializeGame(callback) {
   questionNumber = 0;
   score = 0;
   currentQuestion = null;
-  isEnd = false;
+  isGameEnd = false;
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       lat = processGeovalue(position.coords.latitude);
@@ -93,8 +93,13 @@ function shuffleArray(a) {
 }
 
 function getNextQuestion() {
-  if (isEnd)
-    return {isEnd: true};
+  if (isGameEnd) {
+    return {
+      isEnd: true,
+      currentGame: currentGame,
+      fullScore: wordList.length
+    };
+  }
   var no_answer = false;
   var yes_answer = true;
   var random = questionNumber;
@@ -150,7 +155,7 @@ function displayQuestion() {
 
 function checkAnswer(answer) {
   return new Promise((resolve, reject) => {
-    if (isEnd) {
+    if (isGameEnd) {
       reject("Game is end!");
       return;
     }
@@ -160,7 +165,7 @@ function checkAnswer(answer) {
       score++;
     }
     if (questionNumber === wordList.length - 1) {
-      isEnd = true;
+      isGameEnd = true;
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 // User is signed in.
@@ -177,7 +182,7 @@ function checkAnswer(answer) {
     }
     let current_status = {
       score: score,
-      isEnd: isEnd
+      isEnd: isGameEnd
     }
     resolve(current_status);
   });

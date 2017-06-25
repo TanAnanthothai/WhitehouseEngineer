@@ -24,6 +24,7 @@ $(document).ready(function(event) {
   }
 
   function swipeLike() {
+    if (isGameEnd) return;
     $(".question").html('<div class="loading-text"></div>');
     var status = $("div#swipe_like").data('status');
     checkAnswer(status).then(function(current_game_status) {
@@ -49,6 +50,7 @@ $(document).ready(function(event) {
   }
 
   function swipeDislike() {
+    if (isGameEnd) return;
     $(".question").html('<div class="loading-text"></div>');
     var status = $("div#swipe_dislike").data('status');
     checkAnswer(status).then(function(current_game_status) {
@@ -77,17 +79,41 @@ $(document).ready(function(event) {
     $(photo).remove();
   }
 
-  function updateGameProgress(currentGame, fullScore) {
-    currentGame.question
+  function updateGameProgress(currentGame, fullScore, isEnd) {
+    $('.game-progress-bar').html('');
+    for (var i = 0; i < currentGame.questions.length; i++) {
+      if (currentGame.questions[i].correct) {
+        // correct
+        $('.game-progress-bar').append('<div class="game-progress-bar-item correct"></div>');
+      } else {
+        // incorrect
+        $('.game-progress-bar').append('<div class="game-progress-bar-item incorrect"></div>');
+      }
+    }
+    for (var i = 0; i < fullScore - currentGame.questions.length; i++) {
+      $('.game-progress-bar').append('<div class="game-progress-bar-item"></div>');
+    }
+
+    if (isEnd) {
+      $(".question").html('You\'ve got ' + currentGame.score + ' out of ' + fullScore);
+      $(".app").html(`<div class="game-end">
+        <a href="tinder.html">
+          <button type="button" class="btn btn-primary"><i class="fa fa-repeat" aria-hidden="true"></i> Play again</button>
+        </a>
+        <a href="history.html" style="margin-top: 10px;">
+          <button type="button" class="btn btn-link"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to home</button>
+        </a>
+      </div>`);
+    }
   }
 
   function addNewQuestion() {
     var question = getNextQuestion();
+    updateGameProgress(question.currentGame, question.fullScore, question.isEnd);
     if (question.isEnd) {
       console.log('Game End!');
       return;
     }
-    // updateGameProgress(question.currentGame, question.fullScore);
     $("div.content").prepend('<div class="photo" id="photo" style="background-image:url(' + question.question_picture + ')"></div>');
     $(".question").html(question.question_line);
     $("div#swipe_like").data('status', question.yes_button);

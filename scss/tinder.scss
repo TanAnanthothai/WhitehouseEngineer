@@ -66,6 +66,14 @@
 	border-radius: 7px;
 	flex: 1;
 	margin-right: 4px;
+
+	&.correct {
+		background: #7ED321;
+	}
+
+	&.incorrect {
+		background: #F35156;
+	}
 }
 
 .game-status-score-text {
@@ -162,6 +170,12 @@ div.photo {
 	background-size: cover;
 	background-repeat: no-repeat;
 	box-shadow: 0 1px 7px 0 #cfcfcf;
+}
+
+.game-end {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 span.meta {
