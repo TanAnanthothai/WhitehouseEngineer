@@ -51,11 +51,6 @@
   <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
   <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
-
-  <!-- Swiper.js -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js" charset="utf-8"></script>
-
 </head>
 
 <style media="screen">
@@ -144,80 +139,36 @@
   <main class="main">
     <!-- <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'> -->
     <div class="app-wrapper">
-
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="question">Is this <strong>your wife</strong>?</div>
-            <div class="app">
-              <div class="content"></div>
-              <div class="content-loader">
-                <div class="photo" id="photo" style="">
-                  <img src="/images/loading-placeholder-image@2x.png" width="65" />
-                  <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="footer footer-history" id="footer-history">
-                <form>
-                  <div class="form-group row">
-                    <label class="col-6 col-form-label pull-right"><strong>You Answer</strong></label>
-                    <div class="col-6">
-                      <p class="form-control-static" id="correct"></p>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-6 col-form-label pull-right"><strong>Correct Word</strong></label>
-                    <div class="col-6">
-                      <p class="form-control-static" id="correct-word">-</p>
-                    </div>
-                  </div>
-                  <div class="card card-block bg-faded" id="definition"></div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="question">Is this <strong>your wife</strong>?</div>
-            <div class="app">
-              <div class="content"></div>
-              <div class="content-loader">
-                <div class="photo" id="photo" style="">
-                  <img src="/images/loading-placeholder-image@2x.png" width="65" />
-                  <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="footer footer-history" id="footer-history">
-                <form>
-                  <div class="form-group row">
-                    <label class="col-6 col-form-label pull-right"><strong>You Answer</strong></label>
-                    <div class="col-6">
-                      <p class="form-control-static" id="correct"></p>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-6 col-form-label pull-right"><strong>Correct Word</strong></label>
-                    <div class="col-6">
-                      <p class="form-control-static" id="correct-word">-</p>
-                    </div>
-                  </div>
-                  <div class="card card-block bg-faded" id="definition"></div>
-                </form>
-              </div>
+      <div class="question">Is this <strong>your wife</strong>?</div>
+      <div class="app">
+        <div class="content"></div>
+        <div class="content-loader">
+          <div class="photo" id="photo" style="">
+            <img src="/images/loading-placeholder-image@2x.png" width="65" />
+            <div class="spinner">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
             </div>
           </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="footer footer-history" id="footer-history">
+          <form>
+            <div class="form-group row">
+              <label class="col-6 col-form-label pull-right"><strong>You Answer</strong></label>
+              <div class="col-6">
+                <p class="form-control-static" id="correct"></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-6 col-form-label pull-right"><strong>Correct Word</strong></label>
+              <div class="col-6">
+                <p class="form-control-static" id="correct-word">-</p>
+              </div>
+            </div>
+            <div class="card card-block bg-faded" id="definition"></div>
+          </form>
+        </div>
       </div>
-
     </div>
   </main>
 
@@ -234,17 +185,6 @@
   <script src="/scripts/history-tinder.js"></script>
   <script src="/scripts/localforage-1.4.0.js"></script>
   <script src="/scripts/client-notification.js" charset="utf-8"></script>
-
-  <script src="/scripts/need-auth.js" charset="utf-8"></script>
-
-  <script type="text/javascript">
-    var swiper = new Swiper('.swiper-container', {
-      pagination: '.swiper-pagination',
-      paginationClickable: true,
-      nextButton: '.swiper-button-next',
-      prevButton: '.swiper-button-prev'
-    });
-  </script>
 
 </body>
 
