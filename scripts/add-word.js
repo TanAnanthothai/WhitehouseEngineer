@@ -10,7 +10,7 @@ var localstream = '';
 
 function submitOnClick() {
   console.log("on click submit");
-  var getImage = $('input[name="image"]').val();
+  // var getImage = $('input[name="image"]').val();
   var getVocal = $('input[name="vocab"]').val();
   // File or Blob named mountains.jpg
   var file = $('input[name="image"]').get(0).files.item(0);
@@ -70,7 +70,7 @@ function getImageFromCamera() {
   document.getElementById("snap").addEventListener("click", function() {
     // context.drawImage(video, 0, 0, 100, 200);
     canvas.style.display = 'block';
-    context.drawImage(video, 0, 0, 300, 300)
+    context.drawImage(video, 0, 0, 10, 10)
     video.pause();
     video.src = "";
     video.style.display = "none";

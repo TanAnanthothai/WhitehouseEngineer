@@ -13,3 +13,7 @@ checkAuth = function() {
 window.addEventListener('load', function() {
   checkAuth();
 });
+
+document.getElementById('logout').addEventListener('click', function() {
+  firebase.auth().signOut();
+});
