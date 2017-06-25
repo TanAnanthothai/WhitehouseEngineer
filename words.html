@@ -10,7 +10,7 @@
   <title>Words | Engder</title>
   <link rel="stylesheet" type="text/css" href="/styles/global.min.css">
   <link rel="stylesheet" type="text/css" href="/styles/ud811.min.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <!-- favicon -->
   <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/android-icon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
@@ -107,9 +107,17 @@
     </div>
   </header>
 
+   
+
+
   <div class="container" style="overflow-y: auto;">
+   <p><br>1. เลือกรูป 2. ใส่คำศัพท์​ 3. ส่ง</p>
     <div class="row justify-content-center">
+    <p> 1. เลือกรูป <br></p>
       <div class="card" style="height: 200px; width: 250px">
+       
+        
+
         <div class="" style="max-height: 200px; ">
           <video id="video" width="100%" height="" autoplay></video>
           <canvas id="canvas" style="width: 100%; display: none;"></canvas>
@@ -129,7 +137,8 @@
           </label>
         </div>
         <!-- <input type="file" class="form-control-file" name="image" accept="image/*;capture=camera"> -->
-        <div class="input-group">
+       <p>2. ใส่คำศัพท์​</p>
+       <div class="input-group">
           <input type="text" id="final_span" class="form-control" placeholder=". . ." name="vocab">
           <span class="input-group-btn">
               <button id="start_button" type="button" onclick="startButton(event)" class="btn btn-secondary" style="background: #FFF; padding: 0 5px 0 5px;border-left: none;">
