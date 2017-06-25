@@ -42,57 +42,302 @@
 
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 
-  <body>
-    <header class="header-wrapper">
-      <div class="header-flex-child">
-        <div class="header">
-          <div class="logo">
-            <img src="/images/english-der-logo.png" width="35" />
-          </div>
-          <h1 class="header__title">Engder</h1>
-          <a id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
-        </div>
-      </div>
-      <div class="menu-flex-child">
-        <div class="menu">
-          <div class="menu-item-flex-child">
-            <a href="/history.html">
-              <div class="menu-item active">
-                <img src="/images/home-icon-active@2x.png" width="22"/>
-                <div class="menu-item-text">Home</div>
-              </div>
-            </a>
-          </div>
-          <div class="menu-item-flex-child">
-            <a href="/tinder.html">
-              <div class="menu-item">
-                <img src="/images/play-icon-inactive@2x.png" width="16"/>
-                <div class="menu-item-text">Play</div>
-              </div>
-            </a>
-          </div>
-          <div class="menu-item-flex-child">
-            <a href="/words.html">
-              <div class="menu-item">
-                <img src="/images/add-word-icon-inactive@2x.png" width="20"/>
-                <div class="menu-item-text">Add</div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </header>
+  <style>
+    /* the loader */
 
-    <div class="main container" id="container-history" style="">
-      <a href="#"></a>
+    .load {
+      margin: 150px auto;
+      width: 100px;
+      height: 100px;
+      /** height is required as absolute value **/
+      background-color: #f46902;
+      border-radius: 100px;
+      position: relative;
+      animation: pulse 2000ms linear infinite;
+      -webkit-animation: pulse 2000ms linear infinite;
+      -moz-animation: pulse 2000ms linear infinite;
+    }
+
+    .load i {
+      position: absolute;
+      top: 28px;
+      left: 35%;
+      color: white;
+      text-shadow: -1px -1px #333;
+    }
+
+    .load:after,
+    .load:before {
+      display: inline-block;
+      margin: auto;
+      position: absolute;
+      content: "";
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      background-color: #f77d09;
+    }
+
+    .load:after {
+      z-index: -100;
+      -webkit-animation: outer-ripple 2000ms linear infinite;
+      -moz-animation: outer-ripple 2000ms linear infinite;
+      animation: outer-ripple 2000ms linear infinite;
+    }
+
+    .load:before {
+      z-index: -200;
+      -webkit-animation: inner-ripple 2000ms linear infinite;
+      -moz-animation: inner-ripple 2000ms linear infinite;
+      animation: inner-ripple 2000ms linear infinite;
+    }
+    /* outer ripple */
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      10% {
+        transform: scale(1.1);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(0.9);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+    }
+
+    @-moz-keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      10% {
+        transform: scale(1.1);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(0.9);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+    }
+
+    @-webkit-keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      10% {
+        transform: scale(1.1);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(0.9);
+        filter: alpha(opacity=1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+    }
+
+
+    @keyframes outer-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      80% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+
+    @-webkit-keyframes outer-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      80% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+
+    @-moz-keyframes outer-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      80% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(3.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+    /* inner ripple */
+
+    @keyframes inner-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      30% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(2.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+
+    @-webkit-keyframes inner-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      30% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(2.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+
+    @-moz-keyframes inner-ripple {
+      0% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      30% {
+        transform: scale(1);
+        filter: alpha(opacity=50);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(2.5);
+        filter: alpha(opacity=0);
+        opacity: 0;
+      }
+    }
+
+    #no-history h1 {
+      color: #5c5c5c;
+      border-bottom: 4px solid #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header-wrapper">
+    <div class="header-flex-child">
+      <div class="header">
+        <div class="logo">
+          <img src="/images/english-der-logo.png" width="35" />
+        </div>
+        <h1 class="header__title">Engder</h1>
+        <a id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+      </div>
     </div>
+    <div class="menu-flex-child">
+      <div class="menu">
+        <div class="menu-item-flex-child">
+          <a href="/history.html">
+            <div class="menu-item active">
+              <img src="/images/home-icon-active@2x.png" width="22" />
+              <div class="menu-item-text">Home</div>
+            </div>
+          </a>
+        </div>
+        <div class="menu-item-flex-child">
+          <a href="/tinder.html">
+            <div class="menu-item">
+              <img src="/images/play-icon-inactive@2x.png" width="16" />
+              <div class="menu-item-text">Play</div>
+            </div>
+          </a>
+        </div>
+        <div class="menu-item-flex-child">
+          <a href="/words.html">
+            <div class="menu-item">
+              <img src="/images/add-word-icon-inactive@2x.png" width="20" />
+              <div class="menu-item-text">Add</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <script src="/scripts/localforage-1.4.0.js"></script>
-    <script src="/scripts/history.js"></script>
-    <script src="/scripts/client-notification.js" charset="utf-8"></script>
+  <div class="main container" id="container-history" style="">
+    <a href="#"></a>
+    <div id="no-history" style="display:none">
+      <div class="load">
+        <a href="/tinder.html">
+        <i class="fa fa-play fa-3x"></i>
+        </a>
+      </div>
+      <h1>Let's PLAY</h1>
+    </div>
+  </div>
 
-    <script src="/scripts/need-auth.js" charset="utf-8"></script>
+  <script src="/scripts/localforage-1.4.0.js"></script>
+  <script src="/scripts/history.js"></script>
+  <script src="/scripts/client-notification.js" charset="utf-8"></script>
 
-  </body>
+  <script src="/scripts/need-auth.js" charset="utf-8"></script>
+
+</body>
 
 </html>

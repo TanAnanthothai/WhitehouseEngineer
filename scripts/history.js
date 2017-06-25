@@ -33,6 +33,10 @@ var listHistory = function(userID) {
       </div></a>`;
         innerDiv.appendChild(line);
       }
+    } else {
+      // no-history
+      console.log('Have no history vocab');
+      document.getElementById('no-history').style.display = "block";
     }
 
   })
