@@ -1,11 +1,24 @@
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-    listHistory(user.uid)
-  } else {
-    // No user is signed in.
-  }
-});
+if(typeof firebase !== 'undefined'){
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            // User is signed in.
+            window.localforage.setItem('currentUser', user.uid).then(function(){
+              console.log('uid stored locally');
+            });
+            listHistory(user.uid)
+        } else {
+            // No user is signed in.
+        }
+    });
+}else{
+  window.localforage.getItem('currentUser', function(err, currentUser){
+    if(currentUser != null){
+       listHistory(currentUser);
+    }else{
+      //no active user for offline
+    }
+  });
+}
 
 var getLocat = '';
 
