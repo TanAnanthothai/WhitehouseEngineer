@@ -28,7 +28,7 @@
   <script src="/scripts/firebase-auth-facebook.js"></script>
 
   <!-- favicon -->
-  <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/android-icon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
@@ -53,6 +53,46 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
 </head>
 
+<style media="screen">
+  .footer-history {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0;
+  }
+
+  .footer-history .item {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: normal;
+    color: #3d3d3d;
+  }
+
+  .footer-history .form-group {
+    margin: 0;
+    margin-top: -5px;
+  }
+
+  .footer-history form {
+    width: 100%;
+  }
+
+  .footer-history img {
+    height: 25px;
+    margin: -20px 0 -10px 0;
+  }
+
+  .footer-history .card {
+    margin-top: 5px;
+    padding: 5px 5px 5px 10px;
+    box-shadow: none;
+  }
+
+  .footer-history .col-form-label{
+    text-align: right;
+    color: #3d3d3d;
+  }
+</style>
+
 <body>
 
   <header class="header-wrapper">
@@ -69,22 +109,28 @@
     <div class="menu-flex-child">
       <div class="menu">
         <div class="menu-item-flex-child">
-          <div class="menu-item active">
-            <img src="/images/home-icon-active@2x.png" width="19"/>
-            <div class="menu-item-text">Home</div>
-          </div>
+          <a href="/history.html">
+            <div class="menu-item active">
+              <img src="/images/home-icon-active@2x.png" width="22"/>
+              <div class="menu-item-text">Home</div>
+            </div>
+          </a>
         </div>
         <div class="menu-item-flex-child">
-          <div class="menu-item">
-            <img src="/images/play-icon-inactive@2x.png" width="14"/>
-            <div class="menu-item-text">Play</div>
-          </div>
+          <a href="/tinder.html">
+            <div class="menu-item">
+              <img src="/images/play-icon-inactive@2x.png" width="16"/>
+              <div class="menu-item-text">Play</div>
+            </div>
+          </a>
         </div>
         <div class="menu-item-flex-child">
-          <div class="menu-item">
-            <img src="/images/add-word-icon-inactive@2x.png" width="17"/>
-            <div class="menu-item-text">Add Word</div>
-          </div>
+          <a href="/words.html">
+            <div class="menu-item">
+              <img src="/images/add-word-icon-inactive@2x.png" width="20"/>
+              <div class="menu-item-text">Add</div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -98,15 +144,29 @@
         <div class="content"></div>
         <div class="content-loader">
           <div class="photo" id="photo" style="">
-            <img src="/images/loading-placeholder-image@2x.png" width="65"/>
+            <img src="/images/loading-placeholder-image@2x.png" width="65" />
             <div class="spinner">
               <div class="double-bounce1"></div>
               <div class="double-bounce2"></div>
             </div>
           </div>
         </div>
-        <div class="footer" id="footer-history">
-
+        <div class="footer footer-history" id="footer-history">
+          <form>
+            <div class="form-group row">
+              <label class="col-6 col-form-label pull-right"><strong>You Answer</strong></label>
+              <div class="col-6">
+                <p class="form-control-static" id="correct"></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-6 col-form-label pull-right"><strong>Correct Word</strong></label>
+              <div class="col-6">
+                <p class="form-control-static" id="correct-word">-</p>
+              </div>
+            </div>
+            <div class="card card-block bg-faded" id="definition"></div>
+          </form>
         </div>
       </div>
     </div>
@@ -124,6 +184,7 @@
   <script src="/scripts/word.js" charset="utf-8"></script>
   <script src="/scripts/history-tinder.js"></script>
   <script src="/scripts/localforage-1.4.0.js"></script>
+  <script src="/scripts/client-notification.js" charset="utf-8"></script>
 
 </body>
 

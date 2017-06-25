@@ -57,3 +57,35 @@ function cacheGame(game, uid) {
       });
     });
 }
+
+function updatePastPlayers(game, uid){
+  return new Promise(function(result){
+    firebase.database().ref(`highscores/${game.latitude}/${game.longitude}`).transaction(function(ranking){
+      if(ranking === null){
+        return {
+          top: game.score,
+            recentPlayers: {
+              1: uid
+            }
+        }
+      }else{
+        var topScore = ranking['top'];
+        var recentPlayers = ranking['recentPlayers'];
+        var data = {
+          top: topScore,
+            recentPlayers: recentPlayers
+        };
+        if(topScore < game.score){
+          data['top'] = game.score
+        }
+        var allPlayers = Object.keys(recentPlayers);
+        for(var i = Math.min(5, allPlayers.length+1); i > 0; i--){
+          data['recentPlayers'][i] = data['recentPlayers'][i-1];
+        }
+        data['recentPlayers'][1] = uid;
+        return data;
+      }
+    });
+    return result();
+  })
+}

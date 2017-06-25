@@ -33,6 +33,7 @@ gulp.task('copy-files', function() {
       BASE_DIR + '*.{html,ico}',
       BASE_DIR + 'manifest.json',
       BASE_DIR + 'service-worker.js',
+      BASE_DIR + 'firebase-messaging-sw.js'
     ])
     .pipe(plumber())
     .pipe(changed(copyDest))
@@ -58,14 +59,16 @@ gulp.task('generate-sw', function() {
       './scripts/*.js',
       './styles/*.css'
     ],
-    importScripts: [],
+    importScripts: [
+      'scripts/service-worker-addon.js'
+    ],
     stripPrefix: '.',
     runtimeCaching: [{
       urlPattern: /^https:\/\/whitehouseengineer\.firebaseapp\.com/,
       handler: 'networkFirst',
       options: {
         cache: {
-          name: 'fm-v1'
+          name: 'ed-v1'
         }
       }
     }]
