@@ -28,7 +28,7 @@ var listHistory = function(userID) {
           <h4 class="card-title" style="margin-bottom: 0;">Game # ` + x + `
             <span class="mb-2 text-muted pull-right">score ` + gameHistory[i]['score'] + `/` + gameHistory[i]['fullScore'] + `</span>
           </h4>
-          <p class="card-text" style="margin-bottom: 0;">make up the bulk of the card's content.</p>
+          <p class="card-text" style="margin-bottom: 0;">ชมประวัติการเล่นของคุณ</p>
           <span><span class="pull-right">` + timeSince(date) + `</span></span>
       </div></a>`;
         innerDiv.appendChild(line);
