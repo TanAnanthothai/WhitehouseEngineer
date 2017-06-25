@@ -141,9 +141,11 @@
     <div class="container main-flex-child" style="overflow-y: auto;">
       <p class="text-center">
         <br>
-        <span class="font-bold font-18">สร้างเกมคำศัพท์ง่ายๆภายใน 2 ขั้นตอนเด้อออ</span>
+        <span class="font-bold font-18">สร้างเกมคำศัพท์ง่ายๆ ภายใน 2 ขั้นตอนเด้อออ</span>
+        <span style="font-weight: normal;">
         <br> 1. เลือกรูปที่คุณต้องการ
-        <br> 2. พร้อมใส่คำศัพท์ที่อธิบายภาพนั้นๆเข้าไป
+        <br> 2. พร้อมใส่คำศัพท์ที่อธิบายภาพนั้นๆ
+        </span>
       </p>
       <div class="row justify-content-center">
         <!-- start accordian -->
@@ -152,7 +154,7 @@
             <div class="card-header" role="tab" id="headingOne">
               <h5 class="mb-0">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <span id="font-bold font-18">1. เลือกรูป </span>
+          <span id="font-bold font-18" style="color: #F46500; font-size: 20px; font-weight: bold;">1. เลือกรูป </span>
         </a>
         <img id="correct_icon_img" src="/images/correct.png" style="width: 20px;" alt="correct_img">
       </h5>
@@ -161,7 +163,7 @@
             <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
               <div class="card-block">
                 <!-- start of accordian#1's body -->
-                <p> เลือกรูปที่คุณต้องการ เลือกได้เลยว่าอยากจะถ่ายภาพหรืออัพโหลดภาพใหม่เข้าไปก็ได้เลยเด้อออ </p>
+                <p style="font-weight: normal;"> เลือกรูปที่คุณต้องการ เลือกได้เลยว่าอยากจะถ่ายภาพหรืออัปโหลดภาพใหม่เข้าไปก็ได้เลยเด้อออ </p>
                 <div class="card text-center" style="height: 250px; width: 250px">
                   <div class="text-center" align="middle" style="height: 200px; width: 200px">
                     <video align="middle" id="video" style="width: 200px; height:200px;" autoplay></video>
@@ -169,8 +171,8 @@
                     <img align="middle" id="show-image" src="" alt="" style="display:none; width:200px; height:200px;">
                   </div>
                 </div>
-                <button id="snap" type="button" onclick="submitSnapOnClick()" class="btn continue-but">Snap Photo</button>
-                <button id="re-snap" type="button" onclick="submitResnapOnClick()" class="btn continue-but" style="display: none">Re Snap</button>
+                <button id="snap" type="button" onclick="submitSnapOnClick()" class="btn btn-primary btn-block" style="height: 42px;"><i class="fa fa-camera" aria-hidden="true"></i> Snap Photo</button>
+                <button id="re-snap" type="button" onclick="submitResnapOnClick()" class="btn btn-primary btn-block" style="display: none"><i class="fa fa-camera" aria-hidden="true"></i> Re Snap</button>
                 <br>
                 <div class="form-group text-center">
                   <div class="line-below-text">
@@ -179,8 +181,9 @@
                 </div>
                 <div class="form-group">
                   <input type="file" name="image" accept="image/*;capture=camera" id="file" class="input-file">
-                  <label for="file" class="btn btn-tertiary continue-but js-labelFile">
-              <i class="icon fa fa-check"></i>
+                  <label for="file" class="btn btn-secondary btn-block js-labelFile" style="height: 42px;">
+              <i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;
+              <!-- <button class="btn btn-secondary"></button> -->
               <span class="js-fileName">Choose a file</span>
             </label>
                 </div>
@@ -191,7 +194,7 @@
           <div class="card">
             <div class="card-header" role="tab" id="headingTwo">
               <h5 class="mb-0 font-bold font-18">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <a class="collapsed" style="color: #F46500; font-size: 20px; font-weight: bold;" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           2. ใส่คำศัพท์​ที่อธิบายรูป
         </a>
          <img id="correct_icon_vocab" src="/images/correct.png" style="width: 20px;" alt="correct_img">
@@ -199,7 +202,7 @@
             </div>
             <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
               <div class="card-block">
-                <p> ใส่คำศัพท์​ที่อธิบายรูป เลือกได้เลยตามใจคุณ แต่ใส่ให้ถูกต้องตามหลักภาษาและกาลเทศะนะ (แอดมินจะคอยตรวสอบนะเด้อออ) </p>
+                <p style="font-weight: normal;"> ใส่คำศัพท์​ที่อธิบายรูป เลือกได้เลยตามใจคุณ แต่ใส่ให้ถูกต้องตามหลักภาษาและกาลเทศะนะ </p>
                 <div class="input-group">
                   <input type="text" id="final_span" class="form-control" placeholder=". . ." name="vocab">
                   <span class="input-group-btn">
@@ -215,12 +218,14 @@
             </div>
           </div>
         </div>
-        <button class="btn continue-but" type="button" onclick="submitOnClick()">ส่ง</button>
+
 
         <!-- end of accordian -->
 
       </div>
-
+      <br>
+      <button class="btn btn-primary btn-block" style="height: 42px;" type="button" onclick="submitOnClick()">ส่งคำศัพท์</button>
+      <br><br>
       <div id="cssload-pgloading">
         <img src="/images/english-der-logo.png" alt="" class="cssload-image">
         <div class="cssload-loadingwrap">

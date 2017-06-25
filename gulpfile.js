@@ -57,7 +57,8 @@ gulp.task('generate-sw', function() {
       './*.html',
       './images/*.{png,svg,gif,jpg}',
       './scripts/*.js',
-      './styles/*.css'
+      './styles/*.css',
+      './fonts/**/*'
     ],
     importScripts: [
       'scripts/service-worker-addon.js'
