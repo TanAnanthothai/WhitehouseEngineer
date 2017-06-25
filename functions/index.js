@@ -1,5 +1,4 @@
-//const functions = require('firebase-functions');
-
+// Auto resize
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
@@ -86,10 +85,10 @@ exports.generateThumbnail = functions.storage.object().onChange(event => {
   }).then(() => {
     console.log('Image downloaded locally to', tempFilePath);
     // Generate a thumbnail using ImageMagick.
-    return spawn('convert', [tempFilePath, '-thumbnail', '200x200>', tempFilePath]).then(() => {
+    return spawn('convert', [tempFilePath, '-thumbnail', '400x400>', tempFilePath]).then(() => {
       console.log('Thumbnail created at', tempFilePath);
       // We add a 'thumb_' prefix to thumbnails file name. That's where we'll upload the thumbnail.
-      const thumbFilePath = filePath.replace(/(\/)?([^\/]*)$/, '$1thumb_$2');
+      const thumbFilePath = filePath.replace(/(\/)?([^\/]*)$/, '$1$2');
       // Uploading the thumbnail.
       return bucket.upload(tempFilePath, {
         destination: thumbFilePath

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Engder App">
-  <title>Login | Engder</title>
+  <title>History | Engder</title>
   <link rel="stylesheet" type="text/css" href="/styles/global.min.css">
   <link rel="stylesheet" type="text/css" href="/styles/ud811.min.css">
-  <link rel="stylesheet" type="text/css" href="/styles/login.min.css">
 
   <!-- favicon -->
-  <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/android-icon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
@@ -44,39 +44,56 @@
   <script src="https://cdn.firebase.com/libs/firebaseui/2.2.1/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.2.1/firebaseui.css" />
   <script src="/scripts/firebase-auth-facebook.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 
-</head>
-<body>
-
-  <header class="header-wrapper -no-menu">
-    <div class="header-flex-child">
-      <div class="header">
-        <div class="logo">
-          <img src="/images/english-der-logo.png" width="35" />
+  <body>
+    <header class="header-wrapper">
+      <div class="header-flex-child">
+        <div class="header">
+          <div class="logo">
+            <img src="/images/english-der-logo.png" width="35" />
+          </div>
+          <h1 class="header__title">Engder</h1>
+          <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
+          <button id="butAdd" class="headerButton" aria-label="Add"></button>
         </div>
-        <h1 class="header__title">Engder</h1>
-        <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
-        <button id="butAdd" class="headerButton" aria-label="Add"></button>
       </div>
+      <div class="menu-flex-child">
+        <div class="menu">
+          <div class="menu-item-flex-child">
+            <a href="/history.html">
+              <div class="menu-item active">
+                <img src="/images/home-icon-active@2x.png" width="22"/>
+                <div class="menu-item-text">Home</div>
+              </div>
+            </a>
+          </div>
+          <div class="menu-item-flex-child">
+            <a href="/tinder.html">
+              <div class="menu-item">
+                <img src="/images/play-icon-inactive@2x.png" width="16"/>
+                <div class="menu-item-text">Play</div>
+              </div>
+            </a>
+          </div>
+          <div class="menu-item-flex-child">
+            <a href="/words.html">
+              <div class="menu-item">
+                <img src="/images/add-word-icon-inactive@2x.png" width="20"/>
+                <div class="menu-item-text">Add</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main container" id="container-history" style="">
+      <a href="#"></a>
     </div>
-  </header>
 
-  <main class="main" style="margin-top: 56px;">
-    <div class="centered">
-      <h1>อิงลิชเด้อออ</h1>
-      <h4>Login to get more play Der!</h4>
-      <!-- Authencation -->
-      <div id="firebaseui-auth-container"></div>
-      <a id="go-leaderboard" href="leaderboard.html">
-        <i class="fa fa-sign-in" aria-hidden="true"></i> Go to Leaderboard
-      </a>
-      <button id="sign-out">LOGOUT (EXPERIMENTAL)</button>
-    </div>
-  </main>
+    <script src="/scripts/localforage-1.4.0.js"></script>
+    <script src="/scripts/history.js"></script>
+  </body>
 
-  <script src="/scripts/app.js"></script>
-  <script src="/scripts/localforage-1.4.0.js"></script>
-  <script scr="/scripts/touch-test.js"></script>
-
-</body>
 </html>

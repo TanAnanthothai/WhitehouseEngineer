@@ -46,9 +46,49 @@
   <script src="/scripts/firebase-auth-facebook.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 
+<link type="text/css" rel="stylesheet" href="/styles/loader.css" />
   <style>
-    .app {
-      height: 260px;
+    .btn-tertiary {
+      color: #555;
+      padding: 0;
+      line-height: 40px;
+      width: 300px;
+      margin: auto;
+      display: block;
+      border: 2px solid #555;
+      &:hover,
+      &:focus {
+        color: lighten(#555, 20%);
+        border-color: lighten(#555, 20%);
+      }
+    }
+    /* input file style */
+
+    .input-file {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+      +.js-labelFile {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 0 10px;
+        cursor: pointer;
+        .icon:before {
+          //font-awesome
+          content: "\f093";
+        }
+        &.has-file {
+          .icon:before {
+            //font-awesome
+            content: "\f00c";
+            color: #5AAC7B;
+          }
+        }
+      }
     }
   </style>
 </head>
@@ -60,49 +100,131 @@
         <div class="logo">
           <img src="/images/english-der-logo.png" width="35" />
         </div>
-        <h1 class="header__title">Words | English Der</h1>
+        <h1 class="header__title">Engder</h1>
         <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
         <button id="butAdd" class="headerButton" aria-label="Add"></button>
       </div>
     </div>
-  </header>
-
-  <div class="" style="overflow-y: auto;">
-    <div class="justify-content-center">
-      <div class="card" style="height: 200px; width: 250px">
-        <div class="" style="max-height: 200px; ">
-          <video id="video" width="100%" height="" autoplay></video>
-          <canvas id="canvas" style="width: 100%"></canvas>
+    <div class="menu-flex-child">
+      <div class="menu">
+        <div class="menu-item-flex-child">
+          <a href="/history.html">
+            <div class="menu-item">
+              <img src="/images/home-icon-inactive@2x.png" width="22"/>
+              <div class="menu-item-text">Home</div>
+            </div>
+          </a>
+        </div>
+        <div class="menu-item-flex-child">
+          <a href="/tinder.html">
+            <div class="menu-item">
+              <img src="/images/play-icon-inactive@2x.png" width="16"/>
+              <div class="menu-item-text">Play</div>
+            </div>
+          </a>
+        </div>
+        <div class="menu-item-flex-child">
+          <a href="/words.html">
+            <div class="menu-item active">
+              <img src="/images/add-word-icon-active@2x.png" width="20"/>
+              <div class="menu-item-text">Add</div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <button id="snap" type="button" class="btn btn-danger">Snap Photo</button>
-        <button id="re-snap" type="button" class="btn btn-danger" style="display: none">Re Snap</button>
-        <form enctype="multipart/form-data">
-          <br>
-          <input type="file" class="form-control-file" name="image" accept="image/*;capture=camera">
-          <br>
-          <input id="final_span" type="text" class="form-control form-control-lg" name="vocab">
-          <!-- Speech to text -->
-          <div id="info" style="display: none;"></div>
-          <button id="start_button" type="button" onclick="startButton(event)"><img id="start_img" src="/images/words/mic.gif" alt="Start"></button>
-          <span id="interim_span"></span>
-          <br>
-          <button class="btn btn-success form-control" type="button" onclick="submitOnClick()">ADD</button>
-        </form>
+  </header>
 
-        <div id="currentLocation"></div>
-        <button class="btn btn-primary" type="button" onclick="getLocation()">UPDATE CURRENT LOCATION</button>
+  <div class="main container" style="">
+    <div class="row justify-content-center">
+      <div class="card" style="height: 200px; width: 250px">
+        <div class="" style="max-height: 200px; ">
+          <video id="video" width="100%" height="" autoplay></video>
+          <canvas id="canvas" style="width: 100%; display: none;"></canvas>
+          <img id="show-image" src="" alt="" style="display:none; width:auto; max-width:100%; max-height:170px;">
+        </div>
+      </div>
+
+      <button id="snap" type="button" class="btn btn-danger">Snap Photo</button>
+      <button id="re-snap" type="button" class="btn btn-danger" style="display: none">Re Snap</button>
+      <form enctype="multipart/form-data">
+        <br>
+        <div class="form-group">
+          <input type="file" name="image" accept="image/*;capture=camera" id="file" class="input-file">
+          <label for="file" class="btn btn-tertiary js-labelFile">
+            <i class="icon fa fa-check"></i>
+            <span class="js-fileName">Choose a file</span>
+          </label>
+        </div>
+        <!-- <input type="file" class="form-control-file" name="image" accept="image/*;capture=camera"> -->
+        <div class="input-group">
+          <input type="text" id="final_span" class="form-control" placeholder=". . ." name="vocab">
+          <span class="input-group-btn">
+              <button id="start_button" type="button" onclick="startButton(event)" class="btn btn-secondary" style="background: #FFF; padding: 0 5px 0 5px;border-left: none;">
+                <img id="start_img" src="/images/words/mic.gif" style="width: 35px; back" alt="Start">
+              </button>
+            </span>
+        </div>
+        <span id="interim_span"></span>
+        <div id="info" style="display: none;"></div>
+        <br>
+        <button class="btn btn-success form-control" type="button" onclick="submitOnClick()">ADD</button>
+      </form>
+
+      <div id="currentLocation"></div>
+      <button class="btn btn-primary" type="button" onclick="getLocation()">UPDATE CURRENT LOCATION</button>
+    </div>
+    <div id="cssload-pgloading">
+      <img src="/images/english-der-logo.png" alt="" class="cssload-image">
+      <div class="cssload-loadingwrap">
+        <ul class="cssload-bokeh">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
     </div>
   </div>
-  <br><br><br><br>
 
   <script src="/scripts/add-word.js" charset="utf-8"></script>
   <script src="/scripts/web-speech.js" charset="utf-8"></script>
   <script src="/scripts/word.js" charset="utf-8"></script>
+
+  <script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#show-image').attr('src', e.target.result);
+          document.getElementById("video").style.display = 'none';
+          document.getElementById("canvas").style.display = 'none';
+          document.getElementById("show-image").style.display = 'block';
+          localstream.getTracks()[0].stop();
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#file").change(function() {
+      readURL(this);
+    });
+
+    (function() {
+      'use strict';
+      $('.input-file').each(function() {
+        var $input = $(this),
+          $label = $input.next('.js-labelFile'),
+          labelVal = $label.html();
+
+        $input.on('change', function(element) {
+          var fileName = '';
+          if (element.target.value) fileName = element.target.value.split('\\').pop();
+          fileName ? $label.addClass('has-file').find('.js-fileName').html(fileName) : $label.removeClass('has-file').html(labelVal);
+        });
+      });
+    })();
+  </script>
 
 </body>
 

@@ -1,12 +1,15 @@
 function submitWord(file, word, lat, long, definition = '') {
+  $('#cssload-pgloading').show();
     return new Promise(function (result) {
             if (typeof file == "string") {
                 uploadImageBlob(file).then(function (imageUrl) {
                     addWord(word, lat, long, imageUrl, definition);
+                    $('#cssload-pgloading').hide();
                 });
             } else {
                 uploadImageT(file).then(function (imageUrl) {
                     addWord(word, lat, long, imageUrl, definition);
+                    $('#cssload-pgloading').hide();
                 });
             }
             result();
@@ -168,4 +171,8 @@ function getWords(lat, long){
     let latitude = processGeovalue(lat);
     let longitude = processGeovalue(long);
     return firebase.database().ref('words/' + latitude + '/' + longitude).once('value');
+}
+
+function getAllWordLists(){
+    return firebase.database().ref('words/').once('value');
 }
