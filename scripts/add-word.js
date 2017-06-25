@@ -39,7 +39,7 @@ function submitOnClick() {
     console.log("no vocab");
     $('#correct_icon_vocab').hide();
     alert("อย่าลืมเลือกคำศัพท์นะเด้อออ");
-  } else {  
+  } else {
      // Validate image file
      $('#correct_icon_vocab').show();
       if (!file) {
@@ -57,16 +57,17 @@ function submitOnClick() {
             console.log("dataURL คือออ" + dataURL);
             console.log("Now snap_flag= " + snap_flag);
             b64Text = dataURL.replace('data&colon;image/png;base64,','');
-            file = b64Text.substring(22);   
+            file = b64Text.substring(22);
           }
       }
     console.log("submitWord");
     alert("สำเร็จแล้วเด้อออ");
+    window.location.reload();
     //submitWord(file, getVocal, position_latitude, position_longitude);
   }
-  
-  
-  
+
+
+
 }
 
 function gotDevices(deviceInfos) {
