@@ -7,39 +7,37 @@ function writeNotificationDatabase(userId, token) {
   });
 }
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    currentUserUid = user.uid;
-    console.log(currentUserUid);
-  }
-}, function(error) {
-  console.log(error);
-});
-
 messaging.requestPermission()
-  .then(function() {
-    console.log('Notification permission granted.');
-  })
-  .catch(function(err) {
-    console.log('Unable to get permission to notify.', err);
-  });
-
-messaging.getToken()
-  .then(function(currentToken) {
-    if (currentToken) {
-      console.log(currentToken);
-      console.log(currentUserUid);
-      writeNotificationDatabase(
-        currentUserUid,
-        currentToken
-      );
-    } else {
-      console.log('No Instance ID token available. Request permission to generate one.');
-    }
-  })
-  .catch(function(err) {
-    console.log('An error occurred while retrieving token. ', err);
-  });
+    .then(function() {
+        console.log('Notification permission granted.');
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                currentUserUid = user.uid;
+                console.log(currentUserUid);
+                messaging.getToken()
+                    .then(function(currentToken) {
+                        if (currentToken) {
+                            console.log(currentToken);
+                            console.log(currentUserUid);
+                            writeNotificationDatabase(
+                                currentUserUid,
+                                currentToken
+                            );
+                        } else {
+                            console.log('No Instance ID token available. Request permission to generate one.');
+                        }
+                    })
+                    .catch(function(err) {
+                        console.log('An error occurred while retrieving token. ', err);
+                    });
+            }
+        }, function(error) {
+            console.log(error);
+        });
+    })
+    .catch(function(err) {
+        console.log('Unable to get permission to notify.', err);
+    });
 
 messaging.onTokenRefresh(function() {
   messaging.getToken()
