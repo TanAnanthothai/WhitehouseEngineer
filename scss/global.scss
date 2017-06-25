@@ -18,6 +18,7 @@ $spin-duration: 1s;
 .logout {
   @extend ._font-bold;
   font-size: 16px;
+  cursor: pointer;
 }
 
 @keyframes spin {

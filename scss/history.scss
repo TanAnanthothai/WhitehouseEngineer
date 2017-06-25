@@ -1,4 +1,9 @@
 /* the loader */
+@import 'helper';
+
+#container-history {
+  @extend ._font-heading;
+}
 
 .load {
   margin: 150px auto;
@@ -18,7 +23,7 @@
   top: 28px;
   left: 35%;
   color: white;
-  text-shadow: -1px -1px #333;
+  // text-shadow: -1px -1px #333;
 }
 
 .load:after,
@@ -227,8 +232,8 @@
   }
 }
 
-#no-history h1 {
-  color: #5c5c5c;
+#no-history h2 {
+  color: #4b4b4b;
   border-bottom: 4px solid #fff;
   text-align: center;
   font-family: 'Lato', 'Mitr', sans-serif;
