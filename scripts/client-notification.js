@@ -1,10 +1,20 @@
 const messaging = firebase.messaging();
+var currentUserUid;
 
 function writeNotificationDatabase(userId, token) {
-  firebase.database().ref('notification/' + userId).set({
-    token: token
+  firebase.database().ref('notification/' + token).set({
+    date: Math.floor(Date.now() / 1000)
   });
 }
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    currentUserUid = user.uid;
+    console.log(currentUserUid);
+  }
+}, function(error) {
+  console.log(error);
+});
 
 messaging.requestPermission()
   .then(function() {
@@ -18,8 +28,9 @@ messaging.getToken()
   .then(function(currentToken) {
     if (currentToken) {
       console.log(currentToken);
+      console.log(currentUserUid);
       writeNotificationDatabase(
-        firebase.auth().currentUser.uid,
+        currentUserUid,
         currentToken
       );
     } else {
