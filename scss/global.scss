@@ -144,6 +144,15 @@ $spin-duration: 1s;
 .text-center {
     text-align: center;
 }
+#font-18 {
+    font-color: black;
+    font-size: 18px;
+    line-height: 28px;
+}
+#font-bold {
+    font-color: black;
+    font-weight: 700;
+}
 .font-18 {
     font-size: 18px;
     line-height: 28px;
@@ -158,7 +167,10 @@ $spin-duration: 1s;
   position: absolute;
   right: 20px;
   padding: 5px 11px;
-  background: #f77d09;
-  color: white;
-  border-radius: 3px;
+  background: #ffffff;
+  color: #fa9813;
+  border-radius: 50%;
+  border: 1px solid #fa9813;
+  width: 36px;
+  height: 36px;
 }
