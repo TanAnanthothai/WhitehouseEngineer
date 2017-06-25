@@ -33,6 +33,7 @@ gulp.task('copy-files', function() {
       BASE_DIR + '*.{html,ico}',
       BASE_DIR + 'manifest.json',
       BASE_DIR + 'service-worker.js',
+      BASE_DIR + 'firebase-messaging-sw.js'
     ])
     .pipe(plumber())
     .pipe(changed(copyDest))
