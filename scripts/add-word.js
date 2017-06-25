@@ -61,9 +61,9 @@ function submitOnClick() {
           }
       }
     console.log("submitWord");
-    alert("สำเร็จแล้วเด้อออ");
-    window.location.reload();
     submitWord(file, getVocal, position_latitude, position_longitude);
+    alert("สำเร็จแล้วเด้อออ");
+    //window.location.reload();
   }
 
 
