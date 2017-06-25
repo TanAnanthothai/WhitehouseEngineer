@@ -114,9 +114,9 @@ function uploadImageT(file) {
 function uploadImageBlob(file) {
     return new Promise(function (path) {
 
-        $filename = new Date().getTime();
+        var filename = new Date().getTime();
         // Create a root reference
-        var storageRef = firebase.storage().ref('vocabularies/' + $filename +'.jpg');
+        var storageRef = firebase.storage().ref('vocabularies/' + filename +'.jpg');
 
         // Create the file metadata
         var metadata = {

@@ -105,6 +105,52 @@ $spin-duration: 1s;
   -webkit-align-items: center;
   align-items: center;
 }
+.continue-but {
+  background-color: #f46500;
+  border-width: 0;
+  color: #fff;
+  font-size: 16px;
+  margin-top: 30px;
+  padding: 8px 5px;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: 'Kanit', 'Aileron', sans-serif;
+  /*transition: transform 0.15s;*/
+}
+.line-below-text:before {
+    border-top: 1px solid #ababab;
+    content: "";
+    margin: 0 auto;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 95%;
+    z-index: -1;
+}
+.line-below-text {
+    margin-top: 10px;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+.line-below-text span {
+    background: #fafafa;
+    padding: 0 10px;
+}
+.text-center {
+    text-align: center;
+}
+.font-18 {
+    font-size: 18px;
+    line-height: 28px;
+}
+.font-bold {
+    font-weight: 700;
+}
 
 #logout {
   text-align: right;
