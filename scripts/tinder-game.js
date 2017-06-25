@@ -47,7 +47,6 @@ function initializeGame(callback) {
   questionNumber = 0;
   score = 0;
   currentQuestion = null;
-  currentGame = new game();
   isEnd = false;
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -55,9 +54,10 @@ function initializeGame(callback) {
       long = processGeovalue(position.coords.longitude);
       console.log(lat);
       console.log(long);
+      currentGame = new game(lat, long);
       getAllWordLists().then(function(result){
         allWordLists = result.val();
-        if(allWordLists[lat][long] !== null && allWordLists[lat][long] !== undefined){
+        if(allWordLists[lat] !== null && allWordLists[lat] !== undefined && allWordLists[lat][long] !== null && allWordLists[lat][long] !== undefined){
           dictionary = allWordLists[lat][long];
         }else{
           allWordListsLatKey = Object.keys(allWordLists);
@@ -162,7 +162,8 @@ function checkAnswer(answer) {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 // User is signed in.
-                saveGame(currentGame, user.uid);
+                console.log('update Past Players');
+                updatePastPlayers(currentGame, user.uid).then(function(){saveGame(currentGame, user.uid)});
             } else {
                 // No user is signed in.
                 console.log('user not signed in. game is not saved');
