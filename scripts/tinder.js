@@ -24,6 +24,7 @@ $(document).ready(function(event) {
   }
 
   function swipeLike() {
+    $(".question").html('<div class="loading-text"></div>');
     var status = $("div#swipe_like").data('status');
     checkAnswer(status).then(function(current_game_status) {
       console.log(current_game_status);
@@ -48,6 +49,7 @@ $(document).ready(function(event) {
   }
 
   function swipeDislike() {
+    $(".question").html('<div class="loading-text"></div>');
     var status = $("div#swipe_dislike").data('status');
     checkAnswer(status).then(function(current_game_status) {
       console.log(current_game_status);

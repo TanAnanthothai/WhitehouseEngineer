@@ -30,20 +30,40 @@
 	padding-top: 30px;
 }
 
+@keyframes pulseDim {
+  0% {
+  	opacity: .6;
+  }
+
+  100% {
+  	opacity: .2;
+  }
+}
+
 .question {
 	@extend ._font-heading;
 	font-size: 20px;
 	font-weight: normal;
 	color: #3d3d3d;
+	text-align: center;
+	min-height: 32px;
 
 	strong {
 		color: #F46500;
+	}
+
+	.loading-text {
+		height: 26px;
+		background: #b1b1b1;
+		width: 155px;
+		border-radius: 4px;
+		opacity: .6;
+		animation: pulseDim 0.5s ease-in-out 0s infinite alternate;
 	}
 }
 
 .content, .content-loader {
 	position: relative;
-	// padding: 0 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
