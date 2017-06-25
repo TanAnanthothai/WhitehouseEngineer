@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Engder App">
-  <title>Engder</title>
+  <title>History | Engder</title>
   <link rel="stylesheet" type="text/css" href="/styles/global.css">
   <link rel="stylesheet" type="text/css" href="/styles/ud811.css">
   <!-- <link rel="stylesheet" type="text/css" href="/styles/leaderboard.css"> -->
@@ -51,47 +51,49 @@
   <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
   <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+
+  <script src="/scripts/need-auth.js" charset="utf-8"></script>
+  <style media="screen">
+    .footer-history {
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 0;
+    }
+
+    .footer-history .item {
+      display: inline-block;
+      font-size: 20px;
+      font-weight: normal;
+      color: #3d3d3d;
+    }
+
+    .footer-history .form-group {
+      margin: 0;
+      margin-top: -5px;
+    }
+
+    .footer-history form {
+      width: 100%;
+    }
+
+    .footer-history img {
+      height: 25px;
+      margin: -20px 0 -10px 0;
+    }
+
+    .footer-history .card {
+      margin-top: 5px;
+      padding: 5px 5px 5px 10px;
+      box-shadow: none;
+    }
+
+    .footer-history .col-form-label {
+      text-align: right;
+      color: #3d3d3d;
+    }
+  </style>
+
 </head>
-
-<style media="screen">
-  .footer-history {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 0;
-  }
-
-  .footer-history .item {
-    display: inline-block;
-    font-size: 20px;
-    font-weight: normal;
-    color: #3d3d3d;
-  }
-
-  .footer-history .form-group {
-    margin: 0;
-    margin-top: -5px;
-  }
-
-  .footer-history form {
-    width: 100%;
-  }
-
-  .footer-history img {
-    height: 25px;
-    margin: -20px 0 -10px 0;
-  }
-
-  .footer-history .card {
-    margin-top: 5px;
-    padding: 5px 5px 5px 10px;
-    box-shadow: none;
-  }
-
-  .footer-history .col-form-label{
-    text-align: right;
-    color: #3d3d3d;
-  }
-</style>
 
 <body>
 
@@ -102,7 +104,7 @@
           <img src="/images/english-der-logo.png" width="35" />
         </div>
         <h1 class="header__title">Engder</h1>
-        <a id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+        <a id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
 
       </div>
     </div>
@@ -111,7 +113,7 @@
         <div class="menu-item-flex-child">
           <a href="/history.html">
             <div class="menu-item active">
-              <img src="/images/home-icon-active@2x.png" width="22"/>
+              <img src="/images/home-icon-active@2x.png" width="22" />
               <div class="menu-item-text">Home</div>
             </div>
           </a>
@@ -119,7 +121,7 @@
         <div class="menu-item-flex-child">
           <a href="/tinder.html">
             <div class="menu-item">
-              <img src="/images/play-icon-inactive@2x.png" width="16"/>
+              <img src="/images/play-icon-inactive@2x.png" width="16" />
               <div class="menu-item-text">Play</div>
             </div>
           </a>
@@ -127,7 +129,7 @@
         <div class="menu-item-flex-child">
           <a href="/words.html">
             <div class="menu-item">
-              <img src="/images/add-word-icon-inactive@2x.png" width="20"/>
+              <img src="/images/add-word-icon-inactive@2x.png" width="20" />
               <div class="menu-item-text">Add</div>
             </div>
           </a>

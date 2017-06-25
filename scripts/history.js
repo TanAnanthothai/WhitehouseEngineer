@@ -7,6 +7,8 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+var getLocat = '';
+
 var listHistory = function(userID) {
   window.localforage.getItem(userID, function(err, gameHistory) {
     gameHistory; //array of game object (look in game.js)
@@ -19,20 +21,27 @@ var listHistory = function(userID) {
         var date = new Date(gameHistory[i]['timestamp']);
         console.log(timeSince(date));
         // var datetime = convertTime(gameHistory[i]['timestamp'], '/');
-
-        x = x + i;
+        getLocat = '';
+        if (typeof gameHistory[i]['latitude'] !== 'undefined' || typeof gameHistory[i]['longitude'] !== 'undefined') {
+          getLocat = '<i class="fa fa-map-marker" aria-hidden="true"></i> '+gameHistory[i]['latitude']+', '+gameHistory[i]['longitude'];
+        }
+        x = i + 1;
         var innerDiv = document.getElementById('container-history');
         // innerDiv.appendChild("TEST");
-        var line = document.createElement("p");
+        var line = document.createElement("div");
         line.innerHTML = `<a href="/history-vocab.html?key=` + i + `"><div class="card">
-          <h4 class="card-title" style="margin-bottom: 0;">Game # ` + x + `
+          <h4 class="card-title">Game # ` + x + `
             <span class="mb-2 text-muted pull-right">score ` + gameHistory[i]['score'] + `/` + gameHistory[i]['fullScore'] + `</span>
           </h4>
-          <p class="card-text" style="margin-bottom: 0;">make up the bulk of the card's content.</p>
-          <span><span class="pull-right">` + timeSince(date) + `</span></span>
+          <span>`+getLocat+`
+          <span class="pull-right">` + timeSince(date) + `</span></span>
       </div></a>`;
         innerDiv.appendChild(line);
       }
+    } else {
+      // no-history
+      console.log('Have no history vocab');
+      document.getElementById('no-history').style.display = "block";
     }
 
   })
