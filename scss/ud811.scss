@@ -201,9 +201,12 @@ body {
 }
 
 .main {
+  display :flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 97px;
   // padding-top: 20px;
-  flex: 1;
+  // flex: 1;
   overflow-x: hidden;
   position: relative;
   z-index: 0;
@@ -213,6 +216,11 @@ body {
   &.collapse-header {
     margin-top: 41px;
   }
+}
+
+.main-flex-child {
+  max-width: 900px;
+  width: 100%;
 }
 
 .dialog-container {

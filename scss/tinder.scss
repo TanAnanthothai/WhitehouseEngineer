@@ -16,11 +16,11 @@
 }
 
 .app-wrapper {
-	padding-top: 30px;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+	padding: 18px 16px 0 16px;
 }
 
 .app {
@@ -28,6 +28,58 @@
 	// height: 490px;
 	background-color: #FFF;
 	padding-top: 30px;
+}
+
+.game-status {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+.game-progress-bar-flex-child {
+	// height: 30px;
+	width: 100%;
+}
+
+.game-progress-bar-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.game-progress-bar-flex-child {
+	flex: 1;
+}
+
+.game-progress-bar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.game-progress-bar-item {
+	height: 7px;
+	background: rgb(224, 224, 224);
+	border-radius: 7px;
+	flex: 1;
+	margin-right: 4px;
+}
+
+.game-status-score-text {
+	margin-top: 15px;
+}
+
+.close-button {
+	margin-left: 10px;
+	opacity: 0.6;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 0.8;
+	}
 }
 
 @keyframes pulseDim {
@@ -42,6 +94,7 @@
 
 .question {
 	@extend ._font-heading;
+	margin-top: 10px;
 	font-size: 20px;
 	font-weight: normal;
 	color: #3d3d3d;
