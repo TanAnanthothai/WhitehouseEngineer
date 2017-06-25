@@ -117,7 +117,9 @@ function getNextQuestion() {
     question_picture: imageUrl,
     question_line: "Is this <strong>" + questionWord + "</strong>?",
     no_button: no_answer,
-    yes_button: yes_answer
+    yes_button: yes_answer,
+    currentGame: currentGame,
+    fullScore: wordList.length
   };
   return question_obj;
 }

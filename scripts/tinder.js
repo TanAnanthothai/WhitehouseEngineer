@@ -77,12 +77,17 @@ $(document).ready(function(event) {
     $(photo).remove();
   }
 
+  function updateGameProgress(currentGame, fullScore) {
+    currentGame.question
+  }
+
   function addNewQuestion() {
     var question = getNextQuestion();
     if (question.isEnd) {
       console.log('Game End!');
       return;
     }
+    // updateGameProgress(question.currentGame, question.fullScore);
     $("div.content").prepend('<div class="photo" id="photo" style="background-image:url(' + question.question_picture + ')"></div>');
     $(".question").html(question.question_line);
     $("div#swipe_like").data('status', question.yes_button);
