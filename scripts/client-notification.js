@@ -2,7 +2,7 @@ const messaging = firebase.messaging();
 var currentUserUid;
 
 function writeNotificationDatabase(userId, token) {
-  firebase.database().ref('users/' + userId + '/' + token).set({
+  firebase.database().ref('users/' + userId + '/notification/' + token).set({
     date: Math.floor(Date.now() / 1000)
   });
 }
