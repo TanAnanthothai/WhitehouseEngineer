@@ -104,6 +104,7 @@ function uploadImageT(file) {
             function() {
                 // Upload completed successfully, now we can get the download URL
                 var downloadURL = uploadTask.snapshot.downloadURL;
+                $('#correct_icon_img').show();
                 console.log(downloadURL);
                 image_path = downloadURL;
                 path(downloadURL);

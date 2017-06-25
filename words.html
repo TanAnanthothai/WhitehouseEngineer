@@ -136,7 +136,12 @@
   </header>
 
   <div class="container" style="overflow-y: auto;">
-   <p><br><br><br><br><br>1. เลือกรูป 2. ใส่คำศัพท์​ 3. ส่ง</p>
+   <p>
+      <br><br><br><br><br> 
+      <span class="font-bold font-18">สร้างเกมคำศัพท์ง่ายๆภายใน 2 ขั้นตอนเด้อออ</span>
+      <br> 1. เลือกรูปที่คุณต้องการ 
+      <br> 2. พร้อมใส่คำศัพท์ที่อธิบายภาพนั้นๆเข้าไป
+   </p>
     <div class="row justify-content-center">
 <!-- start accordian -->
 <div id="accordion" role="tablist" aria-multiselectable="true">
@@ -144,32 +149,25 @@
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          1. เลือกรูป
+          <span id="font-bold font-18">1. เลือกรูป </span>
         </a>
+        <img id="correct_icon_img" src="/images/correct.png" style="width: 20px;" alt="correct_img">
       </h5>
     </div>
 
     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block">
       <!-- start of accordian#1's body -->
-       <!--  <div class="card" style="height: 200px; width: 250px"> -->
-          <div class="text-center" style="height: 200px; width: 200px">
-            <video id="video" style="width: 100%;" autoplay></video>
-            <canvas id="canvas" style="width: 100%; display: none;"></canvas>
-            <img id="show-image" src="" alt="" style="display:none; width:200px; max-width:100%; height:200px;">
+        <p> เลือกรูปที่คุณต้องการ เลือกได้เลยว่าอยากจะถ่ายภาพหรืออัพโหลดภาพใหม่เข้าไปก็ได้เลยเด้อออ </p>
+       <div class="card text-center" style="height: 250px; width: 250px">
+          <div class="text-center" align="middle" style="height: 200px; width: 200px">
+            <video align="middle" id="video" style="width: 200px; height:200px;" autoplay></video>
+            <canvas align="middle" id="canvas" style="display:none; width: 200px; height:200px;"></canvas>
+            <img align="middle" id="show-image" src="" alt="" style="display:none; width:200px; height:200px;">
           </div>
-        <!-- </div> -->
-    <p> 1. เลือกรูป <br></p>
-      <div class="card" style="height: 200px; width: 250px">
-        <div class="" style="max-height: 200px; ">
-          <video id="video" width="100%" height="" autoplay></video>
-          <canvas id="canvas" style="width: 100%; display: none;"></canvas>
-          <img id="show-image" src="" alt="" style="display:none; width:auto; max-width:100%; max-height:170px;">
-        </div>
-      </div>
-
-        <button id="snap" type="button" class="btn continue-but">Snap Photo</button>
-        <button id="re-snap" type="button" class="btn continue-but" style="display: none">Re Snap</button>
+        </div> 
+        <button id="snap" type="button" onclick="submitSnapOnClick()" class="btn continue-but">Snap Photo</button>
+        <button id="re-snap" type="button" onclick="submitResnapOnClick()" class="btn continue-but" style="display: none">Re Snap</button>
           <br>
           <div class="form-group text-center">
             <div class="line-below-text">
@@ -190,14 +188,16 @@
   </div>
   <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
-      <h5 class="mb-0">
+      <h5 class="mb-0 font-bold font-18">
         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           2. ใส่คำศัพท์​ที่อธิบายรูป 
         </a>
+         <img id="correct_icon_vocab" src="/images/correct.png" style="width: 20px;" alt="correct_img">
       </h5>
     </div>
     <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="card-block">
+        <p> ใส่คำศัพท์​ที่อธิบายรูป เลือกได้เลยตามใจคุณ แต่ใส่ให้ถูกต้องตามหลักภาษาและกาลเทศะนะ (แอดมินจะคอยตรวสอบนะเด้อออ) </p>
         <div class="input-group">
           <input type="text" id="final_span" class="form-control" placeholder=". . ." name="vocab">
           <span class="input-group-btn">
@@ -245,6 +245,8 @@
 
   <script>
     $('#cssload-pgloading').hide();
+    $('#correct_icon_img').hide();
+    $('#correct_icon_vocab').hide();
     function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -255,6 +257,7 @@
           document.getElementById("show-image").style.display = 'block';
           localstream.getTracks()[0].stop();
         }
+        $('#correct_icon_img').show();
         reader.readAsDataURL(input.files[0]);
       }
     }
