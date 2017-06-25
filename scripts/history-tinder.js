@@ -96,17 +96,30 @@ $(document).ready(function(event) {
 
   function addNewQuestion() {
     console.log(questionHistory[i]);
-    if (i < u) {
+    if (i < u || typeof questionHistory[i] !== 'undefined') {
       $("div.content").prepend('<div class="photo" id="photo" style="background-image:url(' + questionHistory[i]['imageUrl'] + ')"></div>');
-      $(".question").html(questionHistory[i]['questionWord']);
+      $(".question").html('Is this <strong><u>' + questionHistory[i]['questionWord'] + '</u></strong>?');
 
-      var footerHistory = document.getElementById('footer-history');
-      var line = document.createElement("p");
-      line.innerHTML = 'CORRECT WORD :: '+questionHistory[i]['correctWord'] + '<br>';
-      line.innerHTML += 'DEFINITION :: '+questionHistory[i]['definition'] + '<br>'
-      footerHistory.appendChild(line);
+      if (questionHistory[i]['correct']) {
+        $("#correct").html('<img src="/images/yes-icon.png" alt="Your answer is correct" />');
+      } else {
+        $("#correct").html('<img src="/images/no-icon.png" alt="Your answer is wrong" />');
+      }
+
+      $("#correct-word").html(questionHistory[i]['correctWord']);
+
+      if (questionHistory[i]['definition'] == "") {
+        definition = "-";
+      } else {
+        definition = questionHistory[i]['definition'];
+      }
+      $("#definition").html(definition);
 
       swipe();
+    } else {
+      console.log("END");
+      $(".question").html('WOW?  <strong>Your skill UP!</strong>');
+      $("#footer-history").html('<div class="container"><a href="/tinder.html"><button type="button" class="btn btn-outline-success text-center">PLAY MORE</button></a></div>');
     }
     i++;
   }
