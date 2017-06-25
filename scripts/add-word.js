@@ -7,24 +7,66 @@ var position_latitude = '';
 var position_longitude = '';
 var image_path = '';
 var localstream = '';
+var getVocal = null;
+var file = null;
+var dataURL = null;
+
+var snap_flag = 0;
+
+function submitSnapOnClick() {
+  console.log("Before snap_flag= " + snap_flag);
+  snap_flag = 1;
+  console.log("After snap_flag= " + snap_flag);
+  $('#correct_icon_img').show();
+}
+function submitResnapOnClick() {
+  console.log("Before snap_flag= " + snap_flag);
+  snap_flag = 0;
+  console.log("After snap_flag= " + snap_flag);
+  $('#correct_icon_img').hide();
+}
 
 function submitOnClick() {
   console.log("on click submit");
   // var getImage = $('input[name="image"]').val();
-  var getVocal = $('input[name="vocab"]').val();
+  getVocal = $('input[name="vocab"]').val();
   // File or Blob named mountains.jpg
-  var file = $('input[name="image"]').get(0).files.item(0);
+  file = $('input[name="image"]').get(0).files.item(0);
 
-  if (!file) {
-    console.log("have no file");
-    var canvas = document.getElementById('canvas');
-    var dataURL = canvas.toDataURL();
-    b64Text = dataURL.replace('data&colon;image/png;base64,','');
-    file = b64Text.substring(22);
-    console.log("BASE64 " + file);
+  // Validate vocab file
+  console.log("getVocal" + getVocal);
+  if (getVocal == '') {
+    console.log("no vocab");
+    $('#correct_icon_vocab').hide();
+    alert("อย่าลืมเลือกคำศัพท์นะเด้อออ");
+  } else {  
+     // Validate image file
+     $('#correct_icon_vocab').show();
+      if (!file) {
+          console.log("have no file");
+          var canvas = document.getElementById('canvas');
+          dataURL = canvas.toDataURL();
+          // Validate canvas file
+          console.log("Now snap_flag= " + snap_flag);
+          if (snap_flag == 0) {
+            $('#correct_icon_img').hide();
+            console.log("no canvas OR havent click snap yet");
+            alert("อย่าลืมถ่ายรูปหรือแนบรูปเด้อออ");
+          } else {
+            $('#correct_icon_img').show();
+            console.log("dataURL คือออ" + dataURL);
+            console.log("Now snap_flag= " + snap_flag);
+            b64Text = dataURL.replace('data&colon;image/png;base64,','');
+            file = b64Text.substring(22);   
+          }
+      }
+    console.log("submitWord");
+    alert("สำเร็จแล้วเด้อออ");
+    //submitWord(file, getVocal, position_latitude, position_longitude);
   }
-  submitWord(file, getVocal, position_latitude, position_longitude)
-
+  
+  
+  
 }
 
 function gotDevices(deviceInfos) {
@@ -70,7 +112,7 @@ function getImageFromCamera() {
   document.getElementById("snap").addEventListener("click", function() {
     // context.drawImage(video, 0, 0, 100, 200);
     canvas.style.display = 'block';
-    context.drawImage(video, 0, 0, 10, 10)
+    context.drawImage(video, 0, 0, 400, 150)
     video.pause();
     video.src = "";
     video.style.display = "none";
