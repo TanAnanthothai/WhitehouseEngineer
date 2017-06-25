@@ -105,3 +105,14 @@ $spin-duration: 1s;
   -webkit-align-items: center;
   align-items: center;
 }
+
+#logout {
+  text-align: right;
+  font-size: .8em;
+  position: absolute;
+  right: 20px;
+  padding: 5px 11px;
+  background: #f77d09;
+  color: white;
+  border-radius: 3px;
+}
