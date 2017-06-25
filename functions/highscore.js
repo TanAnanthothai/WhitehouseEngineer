@@ -39,36 +39,36 @@ exports.sendHighscoreNotification = functions.database.ref('/highscores/{lat}/{l
         for(var i = 0;i < pastPlayers.length; i++){
                 allNotificationID.push(admin.database().ref(`/users/${pastPlayers[i]}/notification`).once('value'));
         }
-        return Promise.all(allNotificationID);
-    }).then(function(results){
-        // Notification details.
-        const payload = {
-            notification: {
-                title: 'The ranking has changed',
-                body: 'Someone has scored a higher score in the area you recently played!',
-            }
-        };
-
-        var allTokens = [];
-        for(var i = 0;i < results.length; i++){
-            allTokens.push(results[i].val());
-        }
-        // Send notifications to all tokens.
-        return admin.messaging().sendToDevice(allTokens, payload).then(function(response){
-            // For each message check if there was an error.
-            const tokensToRemove = [];
-            response.results.forEach((result, index) => {
-                const error = result.error;
-                if (error) {
-                    console.error('Failure sending notification to', tokens[index], error);
-                    // Cleanup the tokens who are not registered anymore.
-                    if (error.code === 'messaging/invalid-registration-token' ||
-                        error.code === 'messaging/registration-token-not-registered') {
-                        tokensToRemove.push(tokensSnapshot.ref.child(tokens[index]).remove());
-                    }
+        return Promise.all(allNotificationID).then(function(results){
+            // Notification details.
+            const payload = {
+                notification: {
+                    title: 'The ranking has changed',
+                    body: 'Someone has scored a higher score in the area you recently played!',
                 }
+            };
+
+            var allTokens = [];
+            for(var i = 0;i < results.length; i++){
+                allTokens.push(results[i].val());
+            }
+            // Send notifications to all tokens.
+            return admin.messaging().sendToDevice(allTokens, payload).then(function(response){
+                // For each message check if there was an error.
+                const tokensToRemove = [];
+                response.results.forEach((result, index) => {
+                    const error = result.error;
+                    if (error) {
+                        console.error('Failure sending notification to', tokens[index], error);
+                        // Cleanup the tokens who are not registered anymore.
+                        if (error.code === 'messaging/invalid-registration-token' ||
+                            error.code === 'messaging/registration-token-not-registered') {
+                            tokensToRemove.push(tokensSnapshot.ref.child(tokens[index]).remove());
+                        }
+                    }
+                });
+                return Promise.all(tokensToRemove);
             });
-            return Promise.all(tokensToRemove);
         });
     });
 });
