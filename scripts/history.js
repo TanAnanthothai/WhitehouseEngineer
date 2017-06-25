@@ -42,7 +42,7 @@ var listHistory = function(userID) {
         var innerDiv = document.getElementById('container-history');
         // innerDiv.appendChild("TEST");
         var line = document.createElement("div");
-        line.innerHTML = `<a href="/history-vocab.html?key=` + i + `"><div class="card">
+        line.innerHTML = `<a onclick="linkVocab(` + i + `)"><div class="card">
           <h4 class="card-title">Game # ` + x + `
             <span class="mb-2 text-muted pull-right">score ` + gameHistory[i]['score'] + `/` + gameHistory[i]['fullScore'] + `</span>
           </h4>
@@ -58,6 +58,11 @@ var listHistory = function(userID) {
     }
 
   })
+}
+
+var linkVocab = function(key) {
+  localStorage['localVocabKey'] = key;
+  window.location = "/history-vocab.html";
 }
 
 var convertTime = function(timestamp, separator) {

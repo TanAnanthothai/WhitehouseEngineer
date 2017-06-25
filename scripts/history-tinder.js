@@ -14,8 +14,8 @@ $(document).ready(function(event) {
     }
   });
 
-  var url = new URL(window.location);
-  var key = url.searchParams.get("key");
+  // var url = new URL(window.location);
+  var key = localStorage['localVocabKey'] || 0;
   var i = 0;
   var u = 0;
   var questionHistory = '';
