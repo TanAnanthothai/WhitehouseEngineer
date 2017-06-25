@@ -25,18 +25,18 @@ admin.initializeApp(functions.config().firebase);
  * Followers add a flag to `/followers/{followedUid}/{followerUid}`.
  * Users save their device notification tokens to `/users/{followedUid}/notificationTokens/{notificationToken}`.
  */
-exports.sendHighscoreNotification = functions.database.ref('/highscores/{lat}/{long}/').onWrite(event => {
+exports.sendHighscoreNotification = functions.database.ref('/highscores/{lat}/{long}/top').onWrite(event => {
     const lat = event.params.lat;
     const long = event.params.long;
 
     console.log('Someone has scored a new high score at lat: ', lat, ' long: ', long);
 
     // Get the list of all player
-    const allPastPlayers = admin.database().ref(`/highscores/${lat}/${long}/`).once('value').then(function(result){
+    const allPastPlayers = admin.database().ref(`/highscores/${lat}/${long}/recentPlayers`).once('value').then(function(result){
         const pastPlayers = result.val();
         var allNotificationID = [];
 
-        for(var i = 0;i < pastPlayers.length; i++){
+        for(var i = 1;i < pastPlayers.length+1; i++){
                 allNotificationID.push(admin.database().ref(`/users/${pastPlayers[i]}/notification`).once('value'));
         }
         return Promise.all(allNotificationID).then(function(results){
@@ -50,7 +50,7 @@ exports.sendHighscoreNotification = functions.database.ref('/highscores/{lat}/{l
 
             var allTokens = [];
             for(var i = 0;i < results.length; i++){
-                allTokens.push(results[i].val());
+                allTokens.push(Object.keys(results[i].val()));
             }
             // Send notifications to all tokens.
             return admin.messaging().sendToDevice(allTokens, payload).then(function(response){
