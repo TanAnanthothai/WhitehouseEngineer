@@ -15,6 +15,11 @@ $white: rgb(255,255,255);
 $off-white: rgba($white, 0.2);
 $spin-duration: 1s;
 
+.logout {
+  @extend ._font-bold;
+  font-size: 16px;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -176,16 +181,16 @@ $spin-duration: 1s;
     font-weight: 700;
 }
 
-#logout {
-  text-align: right;
-  font-size: .8em;
-  position: absolute;
-  right: 20px;
-  padding: 5px 11px;
-  background: #ffffff;
-  color: #fa9813;
-  border-radius: 50%;
-  border: 1px solid #fa9813;
-  width: 36px;
-  height: 36px;
-}
+// #logout {
+//   text-align: right;
+//   font-size: .8em;
+//   position: absolute;
+//   right: 20px;
+//   padding: 5px 11px;
+//   background: #ffffff;
+//   color: #fa9813;
+//   border-radius: 50%;
+//   border: 1px solid #fa9813;
+//   width: 36px;
+//   height: 36px;
+// }
