@@ -172,3 +172,7 @@ function getWords(lat, long){
     let longitude = processGeovalue(long);
     return firebase.database().ref('words/' + latitude + '/' + longitude).once('value');
 }
+
+function getAllWordLists(){
+    return firebase.database().ref('words/').once('value');
+}

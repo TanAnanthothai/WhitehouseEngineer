@@ -1,9 +1,11 @@
 class game {
-  constructor() {
+  constructor(latitude, longitude) {
     this.questions = [];
     this.score = 0;
     this.fullScore = 0;
-    this.timestamp = +new Date();
+    this.timestamp = Math.floor((+new Date())/1000);
+    this.latitude = latitude;
+    this.longitude = longitude;
   }
   addQuestion(question) {
     this.questions.push(question);
@@ -35,24 +37,23 @@ function saveGame(game, userID) {
     firebase.database().ref('games/' + userID + '/' + game.timestamp).transaction(function(currentWord) {
       return game.toJSON();
     });
-    cacheGame(game);
+    cacheGame(game, userID);
     result();
   });
 }
 
-function cacheGame(game) {
-  var updatedGameHistory = [];
-  window.localforage.getItem('gameHistory', function(err, gameHistory) {
+function cacheGame(game, uid) {
+    var updatedGameHistory = [];
+    window.localforage.getItem(uid, function(err, gameHistory) {
     if (gameHistory) {
       gameHistory.push(game);
       updatedGameHistory = gameHistory;
     } else {
       updatedGameHistory = [game];
     }
-  }).then(function() {
-    window.localforage.setItem('gameHistory', updatedGameHistory).then(function() {
-      console.log('game stored locally');
+    }).then(function() {
+      window.localforage.setItem(uid, updatedGameHistory).then(function() {
+        console.log('game stored locally');
+      });
     });
-  });
-
 }

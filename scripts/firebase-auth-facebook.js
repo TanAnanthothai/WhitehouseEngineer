@@ -27,7 +27,7 @@ var handleSignedIn = function (user) {
 
 var handleNotSignedIn = function () {
   var uiConfig = {
-    signInSuccessUrl: '/leaderboard.html',
+    signInSuccessUrl: '/history.html',
     signInOptions: [
       firebase.auth.FacebookAuthProvider.PROVIDER_ID
     ],

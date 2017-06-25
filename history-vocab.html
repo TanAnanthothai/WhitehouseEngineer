@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Engder App">
-  <title>Play Flashcards | Engder</title>
+  <title>Engder</title>
   <link rel="stylesheet" type="text/css" href="/styles/global.css">
   <link rel="stylesheet" type="text/css" href="/styles/ud811.css">
   <!-- <link rel="stylesheet" type="text/css" href="/styles/leaderboard.css"> -->
@@ -54,6 +54,7 @@
 </head>
 
 <body>
+
   <header class="header-wrapper">
     <div class="header-flex-child">
       <div class="header">
@@ -68,28 +69,22 @@
     <div class="menu-flex-child">
       <div class="menu">
         <div class="menu-item-flex-child">
-          <a href="/history.html">
-            <div class="menu-item">
-              <img src="/images/home-icon-inactive@2x.png" width="22"/>
-              <div class="menu-item-text">Home</div>
-            </div>
-          </a>
+          <div class="menu-item active">
+            <img src="/images/home-icon-active@2x.png" width="19"/>
+            <div class="menu-item-text">Home</div>
+          </div>
         </div>
         <div class="menu-item-flex-child">
-          <a href="/tinder.html">
-            <div class="menu-item active">
-              <img src="/images/play-icon-active@2x.png" width="16"/>
-              <div class="menu-item-text">Play</div>
-            </div>
-          </a>
+          <div class="menu-item">
+            <img src="/images/play-icon-inactive@2x.png" width="14"/>
+            <div class="menu-item-text">Play</div>
+          </div>
         </div>
         <div class="menu-item-flex-child">
-          <a href="/words.html">
-            <div class="menu-item">
-              <img src="/images/add-word-icon-inactive@2x.png" width="20"/>
-              <div class="menu-item-text">Add</div>
-            </div>
-          </a>
+          <div class="menu-item">
+            <img src="/images/add-word-icon-inactive@2x.png" width="17"/>
+            <div class="menu-item-text">Add Word</div>
+          </div>
         </div>
       </div>
     </div>
@@ -110,10 +105,8 @@
             </div>
           </div>
         </div>
-        <div class="footer">
-          <div id="swipe_dislike" class="rate"></div>
-          <div class="info"></div>
-          <div id="swipe_like" class="rate"></div>
+        <div class="footer" id="footer-history">
+
         </div>
       </div>
     </div>
@@ -127,11 +120,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/utils/Draggable.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-  <script src="/scripts/global.js" charset="utf-8"></script>
   <script src="/scripts/game.js" charset="utf-8"></script>
   <script src="/scripts/word.js" charset="utf-8"></script>
-  <script src="/scripts/tinder-game.js" charset="utf-8"></script>
-  <script src="/scripts/tinder.js"></script>
+  <script src="/scripts/history-tinder.js"></script>
   <script src="/scripts/localforage-1.4.0.js"></script>
 
 </body>
