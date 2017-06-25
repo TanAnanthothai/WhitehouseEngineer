@@ -56,7 +56,7 @@ messaging.onMessage(function(payload) {
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,
-    icon: 'https://whitehouseengineer.firebaseapp.com/images/icons/icon-512x512.png'
+    icon: payload.notification.icon
   };
 
   return self.registration.showNotification(notificationTitle,
