@@ -58,14 +58,16 @@ gulp.task('generate-sw', function() {
       './scripts/*.js',
       './styles/*.css'
     ],
-    importScripts: [],
+    importScripts: [
+      'scripts/service-worker-addon.js'
+    ],
     stripPrefix: '.',
     runtimeCaching: [{
       urlPattern: /^https:\/\/whitehouseengineer\.firebaseapp\.com/,
       handler: 'networkFirst',
       options: {
         cache: {
-          name: 'fm-v1'
+          name: 'ed-v1'
         }
       }
     }]
